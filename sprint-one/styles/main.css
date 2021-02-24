@@ -1,2 +1,96 @@
-
-/*# sourceMappingURL=main.css.map *//*# sourceMappingURL=main.css.map */
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-UltLt.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-UltLtIt.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-ThinIt.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-LightIt.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-It.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-MediumIt.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Demi.otf) format('opentype'");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-DemiIt.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-BoldIt.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/_Global-Font/AvenirNextProLT/Linotype - AvenirNextLTPro-HeavyIt.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}/*# sourceMappingURL=main.css.map */
