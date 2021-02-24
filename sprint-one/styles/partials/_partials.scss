@@ -1,0 +1,50 @@
+// Global
+$paragraph: #323232;
+$text-label: #afafaf;
+$text-field-border: #e1e1e1;
+$text-field-background: #fafafa;
+// INSTOCK COLOR
+$navigation-background-fill: #323232;
+$ins-primary-cta: #004832;
+$ins-primary-cta-hover: #002f5f;
+// BRAINFLIX
+$brain-primary-cta: #0095ff;
+$brain-primary-cta-hover: #0065ad;
+// BANDSITE
+$band-navigation-background-fill: #323232;
+$band-primary-cta: #323232;
+$band-primary-cta-hover: #0065ad;
+
+// MIXIN
+@mixin font($color, $size, $weight) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+}
+@mixin flex($flex, $direction, $wrap) {
+  display: $flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+@mixin width($min: null, $width: null, $max: null) {
+  @if $min != null {
+    min-width: $min;
+  }
+  @if $width != null {
+    width: $width;
+  }
+  @if max != null {
+    max-width: $max;
+  }
+}
+@mixin height($min: null, $height: null, $max: null) {
+  @if $min != null {
+    min-height: $min;
+  }
+  @if $height != null {
+    height: $height;
+  }
+  @if max != null {
+    max-height: $max;
+  }
+}
