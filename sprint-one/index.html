@@ -9,21 +9,24 @@
   </head>
   <body>
     <nav class="navbar">
-      <ul class="navbar-list">
-        <li class="navbar-list__items"><a href="#">BANDSITE</a></li>
-        <li class="navbar-list__items"><a href="#">Biography</a></li>
-        <li class="navbar-list__items"><a href="#">Shows</a></li>
+      <div class="navbar-logo" >
+        <a href="#"><img src=".//assets/Logo/Logo-bandsite.svg" alt="logo" /></a>
+      </div>
+        <ul class="navbar-list">
+          <li class="navbar-list__items"><a href="#">Biography</a></li>
+          <li class="navbar-list__items"><a href="#">Shows</a></li>
+        </div>
       </ul>
     </nav>
     <header class="hero">
-      <h1 class="hero__title">Gaspard Auge & Xavier de Rosnay</h1>
+      <h1 class="hero__title">Gaspard Auge &<br> Xavier de Rosnay</h1>
     </header>
     <main>
       <section class="about-container">
         <article class="about">
           <h2 class="about__title">About the Musicians</h2>
           <figure class="about__figure">
-            <img src="#" alt="Musicians photo" />
+            <img class="about__figure--img" src="./assets/Images/band.jpg" alt="Musicians photo" />
           </figure>
           <blockquote class="about__quote">
             "We are comfortable with not fighting what comes naturally. Before we might have thought, 'We need to be smarter than this'
@@ -46,7 +49,7 @@
           </p>
         </article>
       </section>
-      <section class="gallery.container">
+      <section class="gallery-container">
         <article class="gallery">
           <h2 class="gallery__title">Photo Gallery</h2>
           <div class="gallery__figure"><img class="gallery__figure--img" src="#" alt="Picture" /></div>
@@ -70,7 +73,8 @@
               <li class="footer__link"><a href="#"></a><img src="#" alt="#" /></li>
               <li class="footer__link"><a href="#"></a><img src="#" alt="#" /></li>
               <li class="footer__link"><a href="#"></a><img src="#" alt="#" /></li>
-              <li class="footer__link"><a href="#"></a>BANDSITE</li>
+              <li class="footer__link">
+                <a class="footer__link--hide" href="#">BANDSITE</a></li>
             </ul>
           </div>
         </article>
@@ -105,7 +109,7 @@
               RWL@wmeentertainment.com
             </address>
           </div>
-          <small>
+          <small class="footer-copyright"> 
             Copyright The Bees Knees <span>&#169;</span> 2018 <br />
             All Rights Reserved
           </small>
