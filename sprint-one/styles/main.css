@@ -49,7 +49,6 @@ body {
   flex-direction: column;
   background-color: #323232;
   list-style: none;
-  justify-content: center;
   align-items: center;
   text-align: center;
 }
@@ -67,7 +66,9 @@ body {
 }
 
 .navbar-logo {
-  margin-bottom: 16px;
+  margin: 16px 0;
+  height: 17px;
+  color: red;
 }
 
 .navbar-list {
@@ -79,6 +80,14 @@ body {
 .navbar-list__items {
   width: 160px;
   list-style: none;
+  padding-bottom: 4px;
+}
+.navbar-list__items--bar {
+  border-bottom: 5px solid white;
+}
+
+#biography {
+  font-weight: 700;
 }
 
 .hero {
@@ -170,6 +179,7 @@ body {
 .about-band__title {
   font-size: 0.875rem;
   line-height: 1.375rem;
+  margin-bottom: 24px;
 }
 @media (min-width: 768px) {
   .about-band__title {
@@ -180,7 +190,7 @@ body {
 .about-band__text {
   font-size: 0.813rem;
   line-height: 1.125rem;
-  margin-top: 24px;
+  margin-bottom: 24px;
 }
 @media (min-width: 768px) {
   .about-band__text {
@@ -190,7 +200,7 @@ body {
 }
 
 .gallery-container {
-  margin: 0 16px 0 16px;
+  margin: 0 16px 32px 16px;
 }
 
 .gallery {
@@ -225,6 +235,7 @@ body {
 .footer__title {
   font-size: 1.5rem;
   line-height: 2rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
   margin: 40px 0 24px 0;

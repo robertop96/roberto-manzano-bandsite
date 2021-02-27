@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   background-color: $navigation-background-fill;
   list-style: none;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   text-align: center;
   a {
@@ -29,8 +29,9 @@ body {
   }
 }
 .navbar-logo {
-  margin-bottom: 16px;
-  // background-color: red;
+  margin: 16px 0;
+  height: 17px;
+  color: red;
 }
 .navbar-list {
   @include flex(flex, row, wrap);
@@ -39,7 +40,15 @@ body {
   &__items {
     @include width($width: 160px);
     list-style: none;
+    padding-bottom: 4px;
+
+    &--bar {
+      border-bottom: 5px solid white;
+    }
   }
+}
+#biography {
+  font-weight: 700;
 }
 
 // ***HERO***
@@ -98,15 +107,16 @@ body {
 
   &__title {
     @include h3-subheader;
+    margin-bottom: 24px;
   }
   &__text {
     @include h4-paragraph;
-    margin-top: 24px;
+    margin-bottom: 24px;
   }
 }
 // IMAGE GALLERY***
 .gallery-container {
-  margin: 0 16px 0 16px;
+  margin: 0 16px 32px 16px;
 }
 .gallery {
   @include flex(flex, column, wrap);
@@ -134,6 +144,7 @@ body {
 
   &__title {
     @include h1-header;
+    font-size: 2rem;
     font-weight: 700;
     color: white;
     margin: 40px 0 24px 0;
