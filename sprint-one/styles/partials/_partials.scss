@@ -15,12 +15,65 @@ $band-navigation-background-fill: #323232;
 $band-primary-cta: #323232;
 $band-primary-cta-hover: #0065ad;
 
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1440px;
+
 // MIXIN
-@mixin font($color, $size, $weight) {
-  color: $color;
-  font-size: $size;
-  font-weight: $weight;
+@mixin h1-hero {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  @media (min-width: $tablet) {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
 }
+@mixin h1-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  @media (min-width: $tablet) {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+}
+@mixin h2-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin h3-subheader {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  @media (min-width: $tablet) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+@mixin h4-paragraph {
+  font-size: 0.813rem;
+  line-height: 1.125rem;
+  @media (min-width: $tablet) {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@mixin h4-list-contact {
+  font-size: 0.813rem;
+  line-height: 1.125rem;
+  @media (min-width: $tablet) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+@mixin h5-labels {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  @media (min-width: $tablet) {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}
+
 @mixin flex($flex, $direction, $wrap) {
   display: $flex;
   flex-direction: $direction;
