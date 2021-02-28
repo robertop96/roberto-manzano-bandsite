@@ -12,135 +12,235 @@ body {
   font-family: 'Avenir Next';
   width: 100%;
 }
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 // ***NAVBAR***
 .navbar {
-  @include height($height: 80px);
-  display: flex;
-  flex-direction: column;
-  background-color: $navigation-background-fill;
-  list-style: none;
-  // justify-content: center;
-  align-items: center;
+  @include flex-column;
   text-align: center;
-  a {
-    @include h3-subheader;
-    text-decoration: none;
-    color: white;
+  height: 80px;
+  background-color: $navigation-background-fill;
+
+  @include tablet {
+    @include flex-row;
+    align-items: baseline;
   }
-}
-.navbar-logo {
-  margin: 16px 0;
-  height: 17px;
-  color: red;
-}
-.navbar-list {
-  @include flex(flex, row, wrap);
-  justify-content: space-evenly;
 
   &__items {
-    @include width($width: 160px);
+    width: 160px;
     list-style: none;
-    padding-bottom: 4px;
-
+    margin: 16px 0 0 0;
+    padding-bottom: 5px;
+    @include tablet {
+      min-width: auto;
+      margin: 0 48px 0 40px;
+    }
+    @include desktop {
+      margin: 0 56px;
+    }
+    &--logo {
+      @include side-margin-logo;
+      margin-top: 16px;
+      height: 15px;
+      @include tablet {
+        margin-top: 24px;
+      }
+    }
     &--bar {
       border-bottom: 5px solid white;
     }
+    a {
+      @include h3-subheader;
+      color: white;
+    }
+  }
+  &__links-cont {
+    @include flex-row;
+    justify-content: space-between;
   }
 }
 #biography {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 // ***HERO***
 .hero {
-  @include flex(flex, row, wrap);
-  @include height($height: 183px);
-  @include width($width: 100%);
+  @include flex-row;
+  align-items: center;
   background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
   background-size: cover;
-  align-items: center;
-
+  width: 100%;
+  min-height: 183px;
+  height: 40vw;
+  @include tablet {
+    min-height: 400px;
+  }
+  @include desktop {
+    min-height: 670px;
+  }
   &__title {
     @include h1-hero;
     color: white;
-    margin: 0 16px;
+    @include side-margin;
   }
 }
 // ABOUT***
 .about-container {
-  margin: 0 16px;
+  @include side-margin;
 }
 .about {
-  @include flex(flex, column, wrap);
+  @include flex-column;
   font-weight: 600;
 
   &__title {
     @include h1-header;
-    margin-top: 32px;
-    margin-bottom: 24px;
+    margin: 32px 0 24px 0;
+    @include desktop {
+      margin: 48px 0;
+    }
   }
   &__figure {
-    @include width($min: 288px, $width: 100%);
-    height: 50vw;
-    margin-bottom: 24px;
-
+    width: 100%;
+    min-height: 145px;
+    height: 30vw;
+    margin: 0 0 24px 0;
+    @include tablet {
+      min-width: 720px;
+      min-height: 362px;
+    }
+    @include desktop {
+      min-width: 896px;
+      min-height: 450px;
+      padding: 0 100px;
+      margin: 0 0 48px 0;
+    }
     &--img {
       width: 100%;
       height: 100%;
     }
   }
   &__quote {
-    @include h4-paragraph;
-    @include width($min: 288px, $width: 100%);
-    margin-bottom: 32px;
-    // font-family: 'Avenir Next';
+    @include h3-subheader;
+    width: 95%;
+    font-weight: 700;
+    margin: 0 0 32px 0;
+    @include tablet {
+      @include h2-header;
+    }
+    @include desktop {
+      margin: 0 100px 40px 100px;
+      width: 75%;
+    }
 
     &--author {
-      margin-bottom: 40px;
-      @include h4-paragraph;
+      @include h3-subheader;
+      margin: 0 0 40px 0;
+      @include desktop {
+        margin: 0 100px 56px 100px;
+      }
     }
   }
 }
 .about-band {
-  @include flex(flex, column, wrap);
+  @include flex-column;
+  flex-wrap: wrap;
   margin-bottom: 40px;
+  @include tablet {
+    @include flex-row;
+  }
+  @include desktop {
+    margin-bottom: 48px;
+  }
 
   &__title {
     @include h3-subheader;
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
+    @include tablet {
+      @include h2-header;
+    }
+    @include desktop {
+      margin: 0 100px 32px 100px;
+    }
   }
   &__text {
     @include h4-paragraph;
     margin-bottom: 24px;
+    @include tablet {
+      @include flex-row;
+    }
+    @include desktop {
+      margin: 0 100px 0 100px;
+    }
+    &--between {
+      margin: 0 0 16px 0;
+      @include tablet {
+        margin: 0 24px 0 0;
+      }
+      @include desktop {
+        margin-right: 40px;
+      }
+    }
   }
 }
 // IMAGE GALLERY***
 .gallery-container {
-  margin: 0 16px 32px 16px;
+  @include side-margin;
+  &__title {
+    margin: 32px 0 24px 0;
+    @include h1-header;
+    @include desktop {
+      margin: 48px 0 64px 0;
+    }
+  }
 }
 .gallery {
-  @include flex(flex, column, wrap);
-
-  &__title {
-    @include h2-header;
-    margin: 32px 0 24px 0;
+  @include flex-column;
+  @include tablet {
+    @include flex-row;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   &__figure {
-    min-width: 288px;
     width: 100%;
+    height: 162;
     margin-bottom: 16px;
+
+    @include tablet {
+      width: 31%;
+      margin-bottom: 24px;
+      min-width: 224px;
+    }
+
+    @include desktop {
+      width: 31%;
+      min-width: 344px;
+    }
+    &--margin-mid {
+      @include tablet {
+        margin: 0 24px;
+      }
+    }
     &--img {
       width: 100%;
     }
   }
 }
-
+// FOOTER ****
 .footer-container {
+  margin-top: 16px;
   background-color: $navigation-background-fill;
 }
 .footer {
-  margin: 0 16px;
-  @include flex(flex, column, wrap);
+  @include side-margin;
+  @include flex-column;
+  @include tablet {
+    @include flex-row;
+    align-items: baseline;
+  }
 
   &__title {
     @include h1-header;
@@ -148,28 +248,52 @@ body {
     font-weight: 700;
     color: white;
     margin: 40px 0 24px 0;
+    @include desktop {
+      margin: 48px 0 56px 0;
+    }
   }
   &__list {
-    @include flex(flex, row, wrap);
+    @include flex-row;
+    margin-bottom: 24px;
+    flex: 1;
+    @include tablet {
+      margin-left: 44px;
+    }
   }
-  &__link {
-    margin: 0px 8px;
-    list-style: none;
+  &__items {
+    margin: 0px 16px;
+    @include desktop {
+      margin: 0 32px 0 32px 0;
+    }
     &--hide {
-      text-decoration: none;
-      color: white;
       display: none;
+      @include tablet {
+        display: inline-block;
+        margin-left: auto;
+      }
+      @include desktop {
+        width: 120px;
+      }
     }
   }
 }
 .footer-info {
-  @include flex(flex, column, wrap);
-  margin: 24px 16px 0 16px;
+  @include flex-column;
+  @include side-margin;
+  @include tablet {
+    @include flex-row;
+    flex-wrap: wrap;
+  }
 
   .footer-members {
     &__title {
       color: white;
-      @include h4-list-contact;
+      @include h3-subheader;
+    }
+    &__margin-mid {
+      @include tablet {
+        margin: 0 24px;
+      }
     }
     &__address {
       margin: 24px 0;
@@ -179,7 +303,12 @@ body {
   }
 }
 .footer-copyright {
+  @include h4-paragraph;
+  width: 215px;
   color: white;
   margin-bottom: 40px;
-  @include h4-paragraph;
+  flex-basis: 100%;
+  @include desktop {
+    margin-top: 40px;
+  }
 }

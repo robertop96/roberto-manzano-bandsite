@@ -20,6 +20,37 @@ $tablet: 768px;
 $desktop: 1440px;
 
 // MIXIN
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin side-margin {
+  margin: 0 16px;
+  @media (min-width: $tablet) {
+    margin: 0 24px;
+  }
+  @media (min-width: $desktop) {
+    margin: 0 180px;
+  }
+}
+
+@mixin side-margin-logo {
+  margin-left: 16px;
+  @media (min-width: $tablet) {
+    margin-left: 24px;
+  }
+  @media (min-width: $desktop) {
+    margin-left: 180px;
+  }
+}
+
 @mixin h1-hero {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -74,6 +105,16 @@ $desktop: 1440px;
   }
 }
 
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 @mixin flex($flex, $direction, $wrap) {
   display: $flex;
   flex-direction: $direction;
@@ -115,7 +156,7 @@ $desktop: 1440px;
   }
   @font-face {
     font-family: 'Avenir Next';
-    src: url("../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Demi.otf format('opentype'");
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Demi.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
   }
