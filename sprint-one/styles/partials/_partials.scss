@@ -1,25 +1,24 @@
-// Global
+// Global**********************************************************
 $paragraph: #323232;
 $text-label: #afafaf;
 $text-field-border: #e1e1e1;
 $text-field-background: #fafafa;
-// INSTOCK COLOR
+// INSTOCK COLOR**********************************************************
 $navigation-background-fill: #323232;
 $ins-primary-cta: #004832;
 $ins-primary-cta-hover: #002f5f;
-// BRAINFLIX
+// BRAINFLIX***********************************************************
 $brain-primary-cta: #0095ff;
 $brain-primary-cta-hover: #0065ad;
-// BANDSITE
+// BANDSITE ***********************************************************
 $band-navigation-background-fill: #323232;
 $band-primary-cta: #323232;
 $band-primary-cta-hover: #0065ad;
-
+// FONT SIZES **********************************************************
 $mobile: 320px;
 $tablet: 768px;
 $desktop: 1440px;
-
-// MIXIN
+// LAYOUT MIXIN**********************************************************
 @mixin tablet {
   @media (min-width: $tablet) {
     @content;
@@ -30,27 +29,33 @@ $desktop: 1440px;
     @content;
   }
 }
-
 @mixin side-margin {
-  margin: 0 16px;
+  margin: 0 1rem;
   @media (min-width: $tablet) {
-    margin: 0 24px;
+    margin: 0 1.5rem;
   }
   @media (min-width: $desktop) {
-    margin: 0 180px;
+    margin: 0 11.25rem;
   }
 }
-
 @mixin side-margin-logo {
-  margin-left: 16px;
+  margin-left: 1rem;
   @media (min-width: $tablet) {
-    margin-left: 24px;
+    margin-left: 1.5rem;
   }
   @media (min-width: $desktop) {
-    margin-left: 180px;
+    margin-left: 11.25rem;
   }
 }
-
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+// FONT SIZES **********************************************************
 @mixin h1-hero {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -104,45 +109,7 @@ $desktop: 1440px;
     line-height: 1.25rem;
   }
 }
-
-@mixin flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-@mixin flex($flex, $direction, $wrap) {
-  display: $flex;
-  flex-direction: $direction;
-  flex-wrap: $wrap;
-}
-@mixin width($min: null, $width: null, $max: null) {
-  @if $min != null {
-    min-width: $min;
-  }
-  @if $width != null {
-    width: $width;
-  }
-  @if max != null {
-    max-width: $max;
-  }
-}
-@mixin height($min: null, $height: null, $max: null) {
-  @if $min != null {
-    min-height: $min;
-  }
-  @if $height != null {
-    height: $height;
-  }
-  @if max != null {
-    max-height: $max;
-  }
-}
-// FONT LIST MIXIN
+// FONT LIST MIXIN**********************************************************
 @mixin font-list {
   @font-face {
     font-family: 'Avenir Next';

@@ -2,7 +2,7 @@
 @import 'partials/partials';
 // FONTLIST.
 @include font-list;
-
+// GLOBAL ***************************************************************************************
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,11 +18,11 @@ li {
 a {
   text-decoration: none;
 }
-// ***NAVBAR***
+// NAVBAR ***************************************************************************************
 .navbar {
   @include flex-column;
   text-align: center;
-  height: 80px;
+  height: 5rem;
   background-color: $navigation-background-fill;
 
   @include tablet {
@@ -31,31 +31,39 @@ a {
   }
 
   &__items {
-    width: 160px;
-    list-style: none;
-    margin: 16px 0 0 0;
-    padding-bottom: 5px;
+    width: 10rem;
+    padding-bottom: 0.313rem;
+    margin: 1rem 0 0 0;
     @include tablet {
+      width: auto;
       min-width: auto;
-      margin: 0 48px 0 40px;
+      margin: 0 3rem 0 2.5rem;
+      padding: 1.5rem;
     }
     @include desktop {
-      margin: 0 56px;
+      margin: 0 3.5rem;
     }
     &--logo {
       @include side-margin-logo;
-      margin-top: 16px;
-      height: 15px;
+      height: 0.938rem;
+      margin-top: 1rem;
       @include tablet {
-        margin-top: 24px;
+        margin-top: 1.5rem;
       }
     }
     &--bar {
-      border-bottom: 5px solid white;
+      border-bottom: 0.313px solid white;
     }
     a {
+      display: inline-block;
       @include h3-subheader;
       color: white;
+      &:hover {
+        text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+        transform: scale(2);
+        transition: 0.2s;
+        font-weight: bold;
+      }
     }
   }
   &__links-cont {
@@ -67,28 +75,28 @@ a {
   font-weight: 600;
 }
 
-// ***HERO***
+// HERO ***************************************************************************************
 .hero {
   @include flex-row;
   align-items: center;
   background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
   background-size: cover;
   width: 100%;
-  min-height: 183px;
+  min-height: 11.438rem;
   height: 40vw;
   @include tablet {
-    min-height: 400px;
+    min-height: 25rem;
   }
   @include desktop {
-    min-height: 670px;
+    min-height: 41.875rem;
   }
   &__title {
     @include h1-hero;
-    color: white;
     @include side-margin;
+    color: white;
   }
 }
-// ABOUT***
+// ABOUT ***************************************************************************************
 .about-container {
   @include side-margin;
 }
@@ -98,25 +106,25 @@ a {
 
   &__title {
     @include h1-header;
-    margin: 32px 0 24px 0;
+    margin: 2rem 0 1.5rem 0;
     @include desktop {
-      margin: 48px 0;
+      margin: 3rem 0;
     }
   }
   &__figure {
+    min-height: 9.063rem;
     width: 100%;
-    min-height: 145px;
     height: 30vw;
-    margin: 0 0 24px 0;
+    margin: 0 0 1.5rem 0;
     @include tablet {
-      min-width: 720px;
-      min-height: 362px;
+      min-width: 45rem;
+      min-height: 22.625rem;
     }
     @include desktop {
-      min-width: 896px;
-      min-height: 450px;
-      padding: 0 100px;
-      margin: 0 0 48px 0;
+      min-width: 56rem;
+      min-height: 28.125rem;
+      padding: 0 6.25rem;
+      margin: 0 0 3rem 0;
     }
     &--img {
       width: 100%;
@@ -127,20 +135,20 @@ a {
     @include h3-subheader;
     width: 95%;
     font-weight: 700;
-    margin: 0 0 32px 0;
+    margin: 0 0 2rem 0;
     @include tablet {
       @include h2-header;
     }
     @include desktop {
-      margin: 0 100px 40px 100px;
       width: 75%;
+      margin: 0 6.25rem 2.5rem 6.25rem;
     }
 
     &--author {
       @include h3-subheader;
-      margin: 0 0 40px 0;
+      margin: 0 0 2.5rem 0;
       @include desktop {
-        margin: 0 100px 56px 100px;
+        margin: 0 6.25rem 3.5rem 6.25rem;
       }
     }
   }
@@ -148,52 +156,52 @@ a {
 .about-band {
   @include flex-column;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   @include tablet {
     @include flex-row;
   }
   @include desktop {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
 
   &__title {
     @include h3-subheader;
-    margin: 0 0 24px 0;
+    margin: 0 0 1.5rem 0;
     @include tablet {
       @include h2-header;
     }
     @include desktop {
-      margin: 0 100px 32px 100px;
+      margin: 0 6.25rem 2rem 6.25rem;
     }
   }
   &__text {
     @include h4-paragraph;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     @include tablet {
       @include flex-row;
     }
     @include desktop {
-      margin: 0 100px 0 100px;
+      margin: 0 6.25rem 0 6.25rem;
     }
     &--between {
-      margin: 0 0 16px 0;
+      margin: 0 0 1rem 0;
       @include tablet {
-        margin: 0 24px 0 0;
+        margin: 0 1.5rem 0 0;
       }
       @include desktop {
-        margin-right: 40px;
+        margin-right: 2.5rem;
       }
     }
   }
 }
-// IMAGE GALLERY***
+// IMAGE GALLERY ***************************************************************************************
 .gallery-container {
   @include side-margin;
   &__title {
-    margin: 32px 0 24px 0;
+    margin: 2rem 0 1.5rem 0;
     @include h1-header;
     @include desktop {
-      margin: 48px 0 64px 0;
+      margin: 3rem 0 4rem 0;
     }
   }
 }
@@ -206,22 +214,24 @@ a {
   }
   &__figure {
     width: 100%;
-    height: 162;
-    margin-bottom: 16px;
-
+    // height: 162;
+    margin-bottom: 1rem;
+    filter: grayscale(0.6);
+    &:hover {
+      filter: grayscale(0);
+    }
     @include tablet {
       width: 31%;
-      margin-bottom: 24px;
-      min-width: 224px;
+      margin-bottom: 1.5rem;
+      min-width: 14rem;
     }
-
     @include desktop {
       width: 31%;
-      min-width: 344px;
+      min-width: 21.5rem;
     }
     &--margin-mid {
       @include tablet {
-        margin: 0 24px;
+        margin: 0 1.5rem;
       }
     }
     &--img {
@@ -229,9 +239,9 @@ a {
     }
   }
 }
-// FOOTER ****
+// FOOTER ***************************************************************************************
 .footer-container {
-  margin-top: 16px;
+  margin-top: 1rem;
   background-color: $navigation-background-fill;
 }
 .footer {
@@ -243,27 +253,26 @@ a {
   }
 
   &__title {
-    @include h1-header;
     font-size: 2rem;
     font-weight: 700;
     color: white;
-    margin: 40px 0 24px 0;
+    margin: 2.5rem 0 1.5rem 0;
     @include desktop {
-      margin: 48px 0 56px 0;
+      margin: 3rem 0 3.5rem 0;
     }
   }
   &__list {
     @include flex-row;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     flex: 1;
     @include tablet {
-      margin-left: 44px;
+      margin-left: 2.75rem;
     }
   }
   &__items {
-    margin: 0px 16px;
+    margin: 0px 1rem;
     @include desktop {
-      margin: 0 32px 0 32px 0;
+      margin: 0 2rem 0 2rem 0;
     }
     &--hide {
       display: none;
@@ -272,7 +281,7 @@ a {
         margin-left: auto;
       }
       @include desktop {
-        width: 120px;
+        width: 7.5rem;
       }
     }
   }
@@ -284,7 +293,6 @@ a {
     @include flex-row;
     flex-wrap: wrap;
   }
-
   .footer-members {
     &__title {
       color: white;
@@ -292,23 +300,29 @@ a {
     }
     &__margin-mid {
       @include tablet {
-        margin: 0 24px;
+        margin: 0 2rem;
+      }
+      @include desktop {
+        margin-right: 3.875rem;
       }
     }
     &__address {
-      margin: 24px 0;
+      margin: 1.5rem 0;
       color: white;
       @include h4-paragraph;
     }
   }
+  a {
+    color: white;
+  }
 }
 .footer-copyright {
   @include h4-paragraph;
-  width: 215px;
-  color: white;
-  margin-bottom: 40px;
   flex-basis: 100%;
+  color: white;
+  width: 13.438rem;
+  margin-bottom: 2.5rem;
   @include desktop {
-    margin-top: 40px;
+    margin-top: 2.5rem;
   }
 }
