@@ -1,0 +1,148 @@
+// Global**********************************************************
+$paragraph: #323232;
+$text-label: #afafaf;
+$text-field-border: #e1e1e1;
+$text-field-background: #fafafa;
+// INSTOCK COLOR**********************************************************
+$navigation-background-fill: #323232;
+$ins-primary-cta: #004832;
+$ins-primary-cta-hover: #002f5f;
+// BRAINFLIX***********************************************************
+$brain-primary-cta: #0095ff;
+$brain-primary-cta-hover: #0065ad;
+// BANDSITE ***********************************************************
+$band-navigation-background-fill: #323232;
+$band-primary-cta: #323232;
+$band-primary-cta-hover: #0065ad;
+// FONT SIZES **********************************************************
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1440px;
+// LAYOUT MIXIN**********************************************************
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+@mixin side-margin {
+  margin: 0 1rem;
+  @media (min-width: $tablet) {
+    margin: 0 1.5rem;
+  }
+  @media (min-width: $desktop) {
+    margin: 0 11.25rem;
+  }
+}
+@mixin side-margin-logo {
+  margin-left: 1rem;
+  @media (min-width: $tablet) {
+    margin-left: 1.5rem;
+  }
+  @media (min-width: $desktop) {
+    margin-left: 11.25rem;
+  }
+}
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+// FONT SIZES **********************************************************
+@mixin h1-hero {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  @media (min-width: $tablet) {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
+}
+@mixin h1-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  @media (min-width: $tablet) {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+}
+@mixin h2-header {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin h3-subheader {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  @media (min-width: $tablet) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+@mixin h4-paragraph {
+  font-size: 0.813rem;
+  line-height: 1.125rem;
+  @media (min-width: $tablet) {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+@mixin h4-list-contact {
+  font-size: 0.813rem;
+  line-height: 1.125rem;
+  @media (min-width: $tablet) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+@mixin h5-labels {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  @media (min-width: $tablet) {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}
+// FONT LIST MIXIN**********************************************************
+@mixin font-list {
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Regular.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-It.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Demi.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-DemiIt.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-BoldIt.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+  }
+}
