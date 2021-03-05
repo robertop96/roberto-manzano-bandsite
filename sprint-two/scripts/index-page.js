@@ -30,7 +30,7 @@ form.addEventListener('submit', (e) => {
   `;
   newArticle.innerHTML += commentsTemplate;
   // conversation.appendChild(newArticle);
-  conversation.before(newArticle);
+  conversation.prepend(newArticle);
 });
 
 // STATIC COMMENTS***
