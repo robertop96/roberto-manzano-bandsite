@@ -441,7 +441,7 @@ a {
   }
 }
 .conversation-container__title {
-  margin-top: 32px;
+  margin-top: 2rem;
   font-size: 1.5rem;
   line-height: 2rem;
 }
@@ -453,7 +453,7 @@ a {
 }
 @media (min-width: 1440px) {
   .conversation-container__title {
-    margin-top: 48px;
+    margin-top: 3rem;
   }
 }
 
@@ -470,7 +470,7 @@ a {
 @media (min-width: 768px) {
   .conversation-form__divider--top {
     display: block;
-    width: 524px;
+    width: 32.75rem;
     margin: 0 auto 0 auto;
     border-top: 1px solid #e1e1e1;
   }
@@ -496,11 +496,11 @@ a {
 .conversation-form__form-container {
   display: flex;
   flex-direction: column;
-  width: 224px;
+  width: 14rem;
 }
 @media (min-width: 768px) {
   .conversation-form__form-container {
-    width: 460px;
+    width: 28.75rem;
   }
 }
 .conversation-form__name-label {
@@ -508,8 +508,8 @@ a {
   line-height: 1.25rem;
   color: #afafaf;
   font-weight: 600;
-  margin-top: 40px;
-  margin-bottom: 8px;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 @media (min-width: 768px) {
   .conversation-form__name-label {
@@ -519,29 +519,29 @@ a {
 }
 @media (min-width: 1440px) {
   .conversation-form__name-label {
-    margin-top: 58px;
+    margin-top: 3.625rem;
   }
 }
 .conversation-form__name {
-  height: 48px;
+  height: 3rem;
   background-color: #fafafa;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 0.313rem;
 }
 .conversation-form__name::-moz-placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-left: 15px;
+  padding-left: 0.938rem;
 }
 .conversation-form__name:-ms-input-placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-left: 15px;
+  padding-left: 0.938rem;
 }
 .conversation-form__name::placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-left: 15px;
+  padding-left: 0.938rem;
 }
 @media (min-width: 768px) {
   .conversation-form__name::-moz-placeholder {
@@ -562,8 +562,8 @@ a {
   line-height: 1.25rem;
   color: #afafaf;
   font-weight: 600;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 @media (min-width: 768px) {
   .conversation-form__label-textarea {
@@ -573,31 +573,31 @@ a {
 }
 @media (min-width: 1440px) {
   .conversation-form__label-textarea {
-    margin-top: 24px;
+    margin-top: 1.5rem;
   }
 }
 .conversation-form__textarea {
-  height: 96px;
+  height: 6rem;
   background-color: #fafafa;
-  border-radius: 5px;
+  border-radius: 0.313rem;
 }
 .conversation-form__textarea::-moz-placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-top: 15px;
-  padding-left: 15px;
+  padding-top: 0.938rem;
+  padding-left: 0.938rem;
 }
 .conversation-form__textarea:-ms-input-placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-top: 15px;
-  padding-left: 15px;
+  padding-top: 0.938rem;
+  padding-left: 0.938rem;
 }
 .conversation-form__textarea::placeholder {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  padding-top: 15px;
-  padding-left: 15px;
+  padding-top: 0.938rem;
+  padding-left: 0.938rem;
 }
 @media (min-width: 768px) {
   .conversation-form__textarea::-moz-placeholder {
@@ -614,22 +614,22 @@ a {
   }
 }
 .conversation-form__button {
-  width: 224px;
-  height: 48px;
+  width: 14rem;
+  height: 3rem;
   color: white;
   background-color: #323232;
   border: none;
-  border-radius: 4px;
-  margin-top: 16px;
-  margin-bottom: 32px;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 .conversation-form__button:hover {
   background-color: black;
 }
 @media (min-width: 768px) {
   .conversation-form__button {
-    margin-top: 24px;
-    width: 160px;
+    margin-top: 1.5rem;
+    width: 10rem;
     align-self: flex-end;
   }
 }
@@ -638,7 +638,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 @media (min-width: 768px) {
   .conversation-container-posted {
@@ -650,7 +650,7 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 .comment-container__picture {
   display: flex;
@@ -686,18 +686,18 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 224px;
+  width: 14rem;
 }
 @media (min-width: 768px) {
   .comment-body {
-    width: 460px;
+    width: 28.75rem;
     justify-content: flex-start;
   }
 }
 .comment-body__name {
   font-size: 0.75rem;
   line-height: 1.25rem;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   font-weight: 600;
 }
 @media (min-width: 768px) {
@@ -708,7 +708,7 @@ a {
 }
 @media (min-width: 768px) {
   .comment-body__name {
-    margin-right: 16px;
+    margin-right: 1rem;
   }
 }
 .comment-body__date {
@@ -723,11 +723,11 @@ a {
   }
 }
 .comment-body__comment {
-  width: 224px;
+  width: 1.5rem;
   font-size: 0.75rem;
   line-height: 1.25rem;
   flex: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-size: 0.813rem;
   line-height: 1.125rem;
 }

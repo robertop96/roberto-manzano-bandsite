@@ -246,10 +246,10 @@ a {
   @include side-margin;
   @include flex-column;
   &__title {
-    margin-top: 32px;
+    margin-top: 2rem;
     @include h1-header;
     @include desktop {
-      margin-top: 48px;
+      margin-top: 3rem;
     }
   }
 }
@@ -264,7 +264,7 @@ a {
     display: none;
     @include tablet {
       display: block;
-      width: 524px;
+      width: 32.75rem;
       margin: 0 auto 0 auto;
       border-top: 1px solid $divider;
     }
@@ -274,66 +274,66 @@ a {
   }
   &__form-container {
     @include flex-column;
-    width: 224px;
+    width: 14rem;
     @include tablet {
-      width: 460px;
+      width: 28.75rem;
     }
   }
   &__name-label {
     @include h5-labels;
     color: $text-label;
     font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 8px;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
     @include desktop {
-      margin-top: 58px;
+      margin-top: 3.625rem;
     }
   }
   &__name {
-    height: 48px;
+    height: 3rem;
     background-color: $text-field-background;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 0.313rem;
     &::placeholder {
       @include h5-labels;
-      padding-left: 15px;
+      padding-left: 0.938rem;
     }
   }
   &__label-textarea {
     @include h5-labels;
     color: $text-label;
     font-weight: 600;
-    margin-top: 16px;
-    margin-bottom: 8px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     @include desktop {
-      margin-top: 24px;
+      margin-top: 1.5rem;
     }
   }
   &__textarea {
-    height: 96px;
+    height: 6rem;
     background-color: $text-field-background;
-    border-radius: 5px;
+    border-radius: 0.313rem;
     &::placeholder {
       @include h5-labels;
-      padding-top: 15px;
-      padding-left: 15px;
+      padding-top: 0.938rem;
+      padding-left: 0.938rem;
     }
   }
   &__button {
-    width: 224px;
-    height: 48px;
+    width: 14rem;
+    height: 3rem;
     color: white;
     background-color: $band-primary-cta;
     border: none;
-    border-radius: 4px;
-    margin-top: 16px;
-    margin-bottom: 32px;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     &:hover {
       background-color: black;
     }
     @include tablet {
-      margin-top: 24px;
-      width: 160px;
+      margin-top: 1.5rem;
+      width: 10rem;
       align-self: flex-end;
     }
   }
@@ -341,7 +341,7 @@ a {
 .conversation-container-posted {
   @include flex-column;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   @include tablet {
     width: auto;
   }
@@ -349,7 +349,7 @@ a {
 .comment-container {
   @include flex-row;
   flex-wrap: wrap;
-  margin-top: 24px;
+  margin-top: 1.5rem;
   &__picture {
     @include Profile-picture;
   }
@@ -366,17 +366,17 @@ a {
   @include flex-row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 224px;
+  width: 14rem;
   @include tablet {
-    width: 460px;
+    width: 28.75rem;
     justify-content: flex-start;
   }
   &__name {
     @include h5-labels;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     font-weight: 600;
     @include tablet {
-      margin-right: 16px;
+      margin-right: 1rem;
     }
   }
   &__date {
@@ -384,10 +384,10 @@ a {
     color: $text-label;
   }
   &__comment {
-    width: 224px;
+    width: 1.5rem;
     @include h5-labels;
     flex: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     @include h4-paragraph;
   }
 }
