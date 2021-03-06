@@ -1,43 +1,42 @@
 // Conversation***************
-// INTERACTIVE COMMENTS***
+const conversation = document.querySelector('.conversation__static'),
+  form = document.querySelector('form');
 
-const conversation = document.querySelector('.conversation__static');
-const form = document.querySelector('form');
-
-// LISTENS TO THE SUBMIT EVENT WITHIN THE FROM Node, PREVENTS THE
-// DEFAULT RELOAD OF THE PAGE, CREATE OBJECT DATE AND CONVERT THE
-// DATE TO DESIRED VALUE, CREATED OBJECT TO HOLD COMMENT STRUCTURE
-// AND PUSHED DATE AND PHOTO INTO OBJECT, CREATE NEW ARTICLE NODE
-// AND CREATE TEMPLATE TO BE PUSHED INTO ARTICLE NODE. INSERT
-// ARTICLE NODE IN FIRST POSITION OF THE COMMENT SECTION
-
+// INTERACTIVE COMMENTS**********************
+// ----------------------------------------------------------
+// SUBMIT EVENT THAT:
+// STOPS PAGE FROM RELOADING,
+// CREATES A FormData OBJECT
+// APPENDS DATE AND PHOTO PROPERTIES TO FormData
+// RE-ASSIGNS FormData OBJECT (fluidObject) INTO A NORMAL OBJECT.
+// CREATES ARTICLE Element, CREATES newArticle TO BE POPULATED BY fluidObject.
+// FILLS newArticle with CommentsTemplate STRING AND PREPEND IT TO START OF THE COMMENT Selection.
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const currentDate = new Date();
-  const date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-  let fluidCommentObject = new FormData(e.target);
-  fluidCommentObject = Object.fromEntries(fluidCommentObject);
-  fluidCommentObject.date = date;
-  fluidCommentObject.photo = ' ';
+  const currentDate = new Date(),
+    date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+  let fluidObject = new FormData(e.target);
+  fluidObject.append('date', date);
+  fluidObject.append('photo', ' ');
+  fluidObject = Object.fromEntries(fluidObject);
   const newArticle = document.createElement('article');
   const commentsTemplate = `
-  <figure>${fluidCommentObject.photo}</figure>
+  <article>
+  <figure>${fluidObject.photo}</figure>
   <div>
-  <h3>${fluidCommentObject.name}</h3>
-  <div>${fluidCommentObject.date}</div>
-  <article>${fluidCommentObject.comment}</article>
+  <h3>${fluidObject.name}</h3>
+  <div>${fluidObject.date}</div>
+  <article>${fluidObject.comment}</article>
   </div>
+  </article>
   `;
   newArticle.innerHTML += commentsTemplate;
-  // conversation.appendChild(newArticle);
   conversation.prepend(newArticle);
 });
 
-// STATIC COMMENTS***
-
-// // fluidCommentObject IS AN OBJECT THAT HOLDS PROPERTIES
-// TO BE USED AS COMMENT INFO
-const fluidCommentObject = [
+// STATIC COMMENTS**********************
+// commentObject IS AN OBJECT THAT HOLDS THE staticComments.
+const commentObject = [
   {
     photo: 'picture',
     name: 'Michael Lyons',
@@ -60,22 +59,22 @@ const fluidCommentObject = [
       "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He's definitely my favorite ever!",
   },
 ];
-
-// THIS LOOPS THROUGHOUT fluidCommentObject PROPERTIES,
-// CREATES A ARTICLE NODE AND INSERTS THE PROPERTIES IN THE
-// HTML TEMPLATE, THEN APPENDS THE TEMPLATE TO THE CONVERSATION
-// SECTION.
-fluidCommentObject.forEach((fluidCommentObject) => {
-  const newArticle = document.createElement('article');
-  let commentsTemplate = `
-  <figure>${fluidCommentObject.photo}</figure>
+// ------------------------------------------------
+// 1-LOOPS USING .MAP METHOD OVER THE commentObject OBJECT
+// AND PLACE ITS VALUES INTO A HTML TEMPLATE. THIS NEEDS TO BE
+// RETURNED SO WE CAN ACCESS IT VIA staticComments VARIABLE.
+const staticComments = commentObject
+  .map((comment) => {
+    return ` 
+  <article>
+  <figure>${comment.photo}</figure>
   <div>
-  <h3>${fluidCommentObject.name}</h3>
-  <div>${fluidCommentObject.date}</div>
-  <article>${fluidCommentObject.comment}</article>
+  <h3>${comment.name}</h3>
+  <div>${comment.date}</div>
+  <article>${comment.comment}</article>
   </div>
+  </article>
   `;
-  newArticle.innerHTML += commentsTemplate;
-  conversation.appendChild(newArticle);
-});
-console.log(document);
+  })
+  .join();
+conversation.innerHTML += staticComments;
