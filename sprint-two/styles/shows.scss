@@ -1,0 +1,23 @@
+// PARTIAL IMPORT
+@import 'partials/partials';
+// FONTLIST.
+@include font-list;
+@include nav;
+@include hero;
+@include footer;
+// GLOBAL ***************************************************************************************
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Avenir Next';
+  width: 100%;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}

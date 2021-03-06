@@ -146,3 +146,182 @@ $desktop: 1440px;
     font-style: italic;
   }
 }
+
+// MAIN-SCSS BLOCKS***************************************
+// NAVBAR********************
+@mixin nav {
+  .navbar {
+    @include flex-column;
+    text-align: center;
+    height: 5rem;
+    background-color: $navigation-background-fill;
+
+    @include tablet {
+      @include flex-row;
+      align-items: baseline;
+    }
+
+    &__items {
+      width: 50%;
+      padding-bottom: 0.313rem;
+      margin: 1rem 0 0 0;
+      @include tablet {
+        width: auto;
+        min-width: auto;
+        margin: 0 3rem 0 2.5rem;
+        padding: 1.5rem;
+      }
+      @include desktop {
+        margin: 0 3.5rem;
+      }
+      &--logo {
+        @include side-margin-logo;
+        height: 0.938rem;
+        margin-top: 1rem;
+        @include tablet {
+          margin-top: 1.5rem;
+        }
+      }
+      &--bar {
+        border-bottom: 0.313px solid white;
+      }
+      a {
+        display: inline-block;
+        @include h3-subheader;
+        color: white;
+        &:hover {
+          text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+          transform: scale(2);
+          transition: 0.2s;
+          font-weight: bold;
+        }
+      }
+    }
+    &__links-cont {
+      @include flex-row;
+      justify-content: space-between;
+    }
+  }
+  #biography {
+    font-weight: 600;
+  }
+}
+// HERO **********************
+@mixin hero {
+  .hero {
+    @include flex-row;
+    align-items: center;
+    background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
+    background-size: cover;
+    width: 100%;
+    min-height: 11.438rem;
+    height: 40vw;
+    @include tablet {
+      min-height: 25rem;
+    }
+    @include desktop {
+      min-height: 41.875rem;
+    }
+    &__title {
+      @include h1-hero;
+      @include side-margin;
+      color: white;
+    }
+  }
+}
+// FOOTER ******************************
+@mixin footer {
+  .footer-container {
+    margin-top: 1rem;
+    background-color: $navigation-background-fill;
+  }
+  .footer {
+    @include side-margin;
+    @include flex-column;
+    @include tablet {
+      @include flex-row;
+      align-items: baseline;
+    }
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin: 2.5rem 0 1.5rem 0;
+      @include desktop {
+        margin: 3rem 0 3.5rem 0;
+      }
+    }
+    &__list {
+      @include flex-row;
+      margin-bottom: 1.5rem;
+      flex: 1;
+      @include tablet {
+        margin-left: 2.75rem;
+      }
+    }
+    &__items {
+      margin: 0px 1rem;
+      @include desktop {
+        margin: 0 2rem 0 2rem 0;
+      }
+      &--hide {
+        display: none;
+        @include tablet {
+          display: inline-block;
+          margin-left: auto;
+        }
+        @include desktop {
+          width: 7.5rem;
+        }
+      }
+    }
+  }
+  .footer-info {
+    @include flex-column;
+    @include side-margin;
+    @include tablet {
+      @include flex-row;
+      flex-wrap: wrap;
+    }
+    .footer-members {
+      &__title {
+        color: white;
+        @include h3-subheader;
+      }
+      &__margin-mid {
+        @include tablet {
+          margin: 0 2rem;
+        }
+        @include desktop {
+          margin-right: 3.875rem;
+        }
+      }
+      &__address {
+        margin: 1.5rem 0;
+        color: white;
+        @include h4-paragraph;
+
+        &--email:hover {
+          text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+          transform: scale(2);
+          transition: 0.1s;
+          font-weight: bold;
+        }
+      }
+      a {
+        color: white;
+      }
+    }
+    .footer-copyright {
+      @include h4-paragraph;
+      flex-basis: 100%;
+      color: white;
+      width: 13.438rem;
+      margin-bottom: 2.5rem;
+      @include desktop {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+}
