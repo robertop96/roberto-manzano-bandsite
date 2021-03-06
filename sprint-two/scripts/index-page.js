@@ -1,19 +1,17 @@
-// Conversation***************
-const conversation = document.querySelector('.conversation__static'),
+const conversation = document.querySelector('.conversation-posted'),
   form = document.querySelector('form');
 
 const template = (singleCommentObj) => {
-  return `<article>
-  <figure>${singleCommentObj.photo}</figure>
-  <div>
-  <h3>${singleCommentObj.name}</h3>
-  <div>${singleCommentObj.date}</div>
-  <article>${singleCommentObj.comment}</article>
+  return `<article class="comment">
+  <figure class="comment__figure" >${singleCommentObj.photo}</figure>
+  <div class="comment__body">
+    <h3 class="comment__body--title">${singleCommentObj.name}</h3>
+    <div class="comment__body--date">${singleCommentObj.date}</div>
+    <article class="comment__body--comment"><p>${singleCommentObj.comment}</p></article>
   </div>
-  </article>
+</article>
   `;
 };
-
 // INTERACTIVE COMMENTS**********************
 // ----------------------------------------------------------
 // SUBMIT EVENT THAT:
@@ -30,10 +28,13 @@ form.addEventListener('submit', (e) => {
     date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
   let fluidObject = new FormData(e.target);
   fluidObject.append('date', date);
-  fluidObject.append('photo', ' ');
+  fluidObject.append('photo', 'picuture');
   fluidObject = Object.fromEntries(fluidObject);
-  const commentsTemplate = template(fluidObject);
-  conversation.innerHTML = commentsTemplate + conversation.innerHTML;
+  commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
+  displayComment(commentObject); /* REQUISITE */
+
+  // const commentsTemplate = template(fluidObject);
+  // conversation.innerHTML = commentsTemplate + conversation.innerHTML;
 });
 
 // STATIC COMMENTS**********************
@@ -61,14 +62,18 @@ const commentObject = [
       "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He's definitely my favorite ever!",
   },
 ];
-
 // ------------------------------------------------
 // 1-LOOPS USING .MAP METHOD OVER THE commentObject OBJECT
 // AND PLACE ITS VALUES INTO A HTML TEMPLATE. THIS NEEDS TO BE
 // RETURNED SO WE CAN ACCESS IT VIA staticComments VARIABLE.
-const staticComments = commentObject
-  .map((comment) => {
-    return template(comment);
-  })
-  .join('');
-conversation.innerHTML += staticComments;
+
+let displayComment = (object) => {
+  const staticComments = object
+    .map((comment) => {
+      return template(comment);
+    })
+    .join('');
+  conversation.innerHTML = staticComments; /* PREFER += */
+};
+
+displayComment(commentObject);

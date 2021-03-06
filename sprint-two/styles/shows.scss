@@ -3,7 +3,6 @@
 // FONTLIST.
 @include font-list;
 @include nav;
-@include hero;
 @include footer;
 // GLOBAL ***************************************************************************************
 * {
@@ -20,4 +19,30 @@ li {
 }
 a {
   text-decoration: none;
+}
+
+.hero {
+  @include flex-column;
+  align-items: left;
+  justify-content: space-around;
+  background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
+  background-size: cover;
+  width: 100%;
+  min-height: 11.438rem;
+  height: 40vw;
+  @include tablet {
+    min-height: 25rem;
+  }
+  @include desktop {
+    min-height: 41.875rem;
+  }
+  &__subtittle {
+    @include side-margin;
+    color: white;
+  }
+  &__title {
+    @include h1-hero;
+    @include side-margin;
+    color: white;
+  }
 }

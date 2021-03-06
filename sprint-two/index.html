@@ -79,16 +79,30 @@
       </section>
       <section class="conversation-container">
         <h1 class="conversation-container__tittle">Join the Conversation</h1>
-        <article class="conversation">
-          <form class="conversation__form">
-            <label for="name">NAME</label>
-            <input class="conversation__form--name-input" type=text" id="name" name="name" placeholder="Name"/>
-            <label for="comment">COMMENT</label>
-            <textarea class="conversation__form--textarea-input" name="comment" id="comment" cols="30" rows="10"></textarea>
-            <button class="conversation__form--button">COMMENT</button>
-          </form>
-          <section class="conversation__static"></section>
-        </article>
+        <form class="conversation-form">
+          <label class="conversation-form__label" for="name">NAME</label>
+          <input class="conversation-form__input" type=text" id="name" name="name" placeholder="Name"/>
+          <label class="conversation-form__label" for="comment">COMMENT</label>
+          <textarea
+            class="conversation-form__textarea"
+            class="conversation__form--textarea-input"
+            name="comment"
+            id="comment"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button class="conversation-form__button">COMMENT</button>
+        </form>
+        <section class="conversation-posted">
+          <!-- <article class="comment">
+            <figure class="comment__figure">${singleCommentObj.photo}</figure>
+            <div class="comment__body">
+              <h3 class="comment__body--title">${singleCommentObj.name}</h3>
+              <div class="comment__body--date">${singleCommentObj.date}</div>
+              <article class="comment__body--comment"><p>${singleCommentObj.comment}</p></article>
+            </div>
+          </article> -->
+        </section>
       </section>
     </main>
     <footer>

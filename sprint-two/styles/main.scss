@@ -245,18 +245,17 @@ a {
   @include flex-column;
   &__title {
   }
-  .conversation {
-    &__form {
-      @include flex-column;
-      &--name-input {
-      }
-      &--textarea-input {
-      }
-      &--button {
-      }
+
+  .conversation-form {
+    @include flex-column;
+    &--name-input {
     }
-    &__conversation__Static {
+    &--textarea-input {
     }
+    &--button {
+    }
+  }
+  &__conversation__Static {
   }
 }
 

@@ -115,49 +115,6 @@
   font-weight: 600;
 }
 
-.hero {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
-  background-size: cover;
-  width: 100%;
-  min-height: 11.438rem;
-  height: 40vw;
-}
-@media (min-width: 768px) {
-  .hero {
-    min-height: 25rem;
-  }
-}
-@media (min-width: 1440px) {
-  .hero {
-    min-height: 41.875rem;
-  }
-}
-.hero__title {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin: 0 1rem;
-  color: white;
-}
-@media (min-width: 768px) {
-  .hero__title {
-    font-size: 3.75rem;
-    line-height: 4.25rem;
-  }
-}
-@media (min-width: 768px) {
-  .hero__title {
-    margin: 0 1.5rem;
-  }
-}
-@media (min-width: 1440px) {
-  .hero__title {
-    margin: 0 11.25rem;
-  }
-}
-
 .footer-container {
   margin-top: 1rem;
   background-color: #323232;
@@ -331,4 +288,62 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-around;
+  background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/hero.jpg);
+  background-size: cover;
+  width: 100%;
+  min-height: 11.438rem;
+  height: 40vw;
+}
+@media (min-width: 768px) {
+  .hero {
+    min-height: 25rem;
+  }
+}
+@media (min-width: 1440px) {
+  .hero {
+    min-height: 41.875rem;
+  }
+}
+.hero__subtittle {
+  margin: 0 1rem;
+  color: white;
+}
+@media (min-width: 768px) {
+  .hero__subtittle {
+    margin: 0 1.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .hero__subtittle {
+    margin: 0 11.25rem;
+  }
+}
+.hero__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0 1rem;
+  color: white;
+}
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
+}
+@media (min-width: 768px) {
+  .hero__title {
+    margin: 0 1.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .hero__title {
+    margin: 0 11.25rem;
+  }
 }/*# sourceMappingURL=shows.css.map */
