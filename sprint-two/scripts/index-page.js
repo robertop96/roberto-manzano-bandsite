@@ -1,16 +1,19 @@
-const conversation = document.querySelector('.conversation-posted'),
+const conversation = document.querySelector('.conversation-container-posted'),
   form = document.querySelector('form');
 
 const template = (singleCommentObj) => {
-  return `<article class="comment">
-  <figure class="comment__figure" >${singleCommentObj.photo}</figure>
-  <div class="comment__body">
-    <h3 class="comment__body--title">${singleCommentObj.name}</h3>
-    <div class="comment__body--date">${singleCommentObj.date}</div>
-    <article class="comment__body--comment"><p>${singleCommentObj.comment}</p></article>
+  return `
+  <article class="comment-container">
+  <figure class="comment-container__picture">
+    <img class="comment-container__picture-img" src="${singleCommentObj.photo}" alt="profile picture" />
+  </figure>
+  <div class="comment-body">
+    <h3 class="comment-body__name">${singleCommentObj.name}</h3>
+    <div class="comment-body__date">${singleCommentObj.date}</div>
+    <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
   </div>
-</article>
-  `;
+  </article>
+  <hr class="comment-container__divider"/>`;
 };
 // INTERACTIVE COMMENTS**********************
 // ----------------------------------------------------------
@@ -28,7 +31,7 @@ form.addEventListener('submit', (e) => {
     date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
   let fluidObject = new FormData(e.target);
   fluidObject.append('date', date);
-  fluidObject.append('photo', 'picuture');
+  fluidObject.append('photo', 'http://placeimg.com/640/480');
   fluidObject = Object.fromEntries(fluidObject);
   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
   displayComment(commentObject); /* REQUISITE */
@@ -41,21 +44,21 @@ form.addEventListener('submit', (e) => {
 // commentObject IS AN OBJECT THAT HOLDS THE staticComments.
 const commentObject = [
   {
-    photo: 'picture',
+    photo: 'http://placeimg.com/48/48/any',
     name: 'Michael Lyons',
     date: '12/18/2018',
     comment:
       'They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.',
   },
   {
-    photo: 'picture',
+    photo: 'http://placeimg.com/48/48/any',
     name: 'Gary Wong',
     date: '12/12/2018',
     comment:
       "Every time I see him shred I feel so motivated to get off my couch and hop on my board. he's so talented! I wish I can ride like him one day so I can really enjoy myself!",
   },
   {
-    photo: 'picture',
+    photo: 'http://placeimg.com/48/48/any',
     name: 'Theodore Duncan',
     date: '11/15/2018',
     comment:

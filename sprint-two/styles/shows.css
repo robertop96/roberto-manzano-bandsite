@@ -346,4 +346,22 @@ a {
   .hero__title {
     margin: 0 11.25rem;
   }
+}
+.hero__player-cont {
+  margin: 0 1rem;
+  max-width: 288px;
+}
+@media (min-width: 768px) {
+  .hero__player-cont {
+    margin: 0 1.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .hero__player-cont {
+    margin: 0 11.25rem;
+  }
+}
+.hero__player-cont iframe {
+  width: 100%;
+  height: 95.45px;
 }/*# sourceMappingURL=shows.css.map */

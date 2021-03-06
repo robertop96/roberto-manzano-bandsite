@@ -3,6 +3,7 @@ $paragraph: #323232;
 $text-label: #afafaf;
 $text-field-border: #e1e1e1;
 $text-field-background: #fafafa;
+$divider: #e1e1e1;
 // INSTOCK COLOR**********************************************************
 $navigation-background-fill: #323232;
 $ins-primary-cta: #004832;
@@ -54,6 +55,23 @@ $desktop: 1440px;
 @mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+@mixin Profile-picture {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 16px;
+  margin-top: 40px;
+  @include desktop {
+    margin-top: 58px;
+  }
+  &--img {
+    width: 100%;
+    height: auto;
+  }
 }
 // FONT SIZES **********************************************************
 @mixin h1-hero {

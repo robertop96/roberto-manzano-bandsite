@@ -45,4 +45,12 @@ a {
     @include side-margin;
     color: white;
   }
+  &__player-cont {
+    @include side-margin;
+    max-width: 288px;
+    & iframe {
+      width: 100%;
+      height: 95.45px;
+    }
+  }
 }

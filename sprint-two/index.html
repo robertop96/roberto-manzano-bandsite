@@ -78,31 +78,29 @@
         </article>
       </section>
       <section class="conversation-container">
-        <h1 class="conversation-container__tittle">Join the Conversation</h1>
+        <h1 class="conversation-container__title">Join the Conversation</h1>
         <form class="conversation-form">
-          <label class="conversation-form__label" for="name">NAME</label>
-          <input class="conversation-form__input" type=text" id="name" name="name" placeholder="Name"/>
-          <label class="conversation-form__label" for="comment">COMMENT</label>
-          <textarea
-            class="conversation-form__textarea"
-            class="conversation__form--textarea-input"
-            name="comment"
-            id="comment"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <button class="conversation-form__button">COMMENT</button>
+          <figure class="conversation-form__picture">
+            <img class="conversation-form__picture--img" src="http://placeimg.com/48/48/any" alt="profile image" />
+          </figure>
+          <div class="conversation-form__form-container">
+            <label class="conversation-form__name-label" for="name">NAME</label>
+            <input class="conversation-form__name" type=text" id="name" name="name" placeholder="Name"/>
+            <label class="conversation-form__label-textarea" for="comment">COMMENT</label>
+            <textarea
+              class="conversation-form__textarea"
+              class="conversation__form--textarea-input"
+              name="comment"
+              id="comment"
+              cols="30"
+              rows="10"
+              placeholder="Add a new comment"
+            ></textarea>
+            <button class="conversation-form__button">COMMENT</button>
+          </div>
         </form>
-        <section class="conversation-posted">
-          <!-- <article class="comment">
-            <figure class="comment__figure">${singleCommentObj.photo}</figure>
-            <div class="comment__body">
-              <h3 class="comment__body--title">${singleCommentObj.name}</h3>
-              <div class="comment__body--date">${singleCommentObj.date}</div>
-              <article class="comment__body--comment"><p>${singleCommentObj.comment}</p></article>
-            </div>
-          </article> -->
-        </section>
+        <hr class="conversation-form__divider--top" />
+        <section class="conversation-container-posted"></section>
       </section>
     </main>
     <footer>
