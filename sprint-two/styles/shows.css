@@ -370,6 +370,7 @@ a {
 }
 .hero__player-cont--iframe {
   width: 100%;
+  border: none;
 }
 
 .shows-container {
