@@ -13,7 +13,8 @@ const template = (singleCommentObj) => {
     <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
   </div>
   </article>
-  <hr class="comment-container__divider"/>`;
+  <hr class="comment-container__divider"/>
+  `;
 };
 // INTERACTIVE COMMENTS**********************
 // ----------------------------------------------------------
@@ -35,6 +36,7 @@ form.addEventListener('submit', (e) => {
   fluidObject = Object.fromEntries(fluidObject);
   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
   displayComment(commentObject); /* REQUISITE */
+  form.reset();
 
   // const commentsTemplate = template(fluidObject);
   // conversation.innerHTML = commentsTemplate + conversation.innerHTML;

@@ -1,16 +1,5 @@
 const table = document.querySelector('.table__body');
 
-const template = (tableObjct) => {
-  return `
-<tr class="table__row">
-  <td data-th="DATES" class="table__row--data">${tableObjct.dates}</td>
-  <td data-th="VENUE" class="table__row--data">${tableObjct.venue}</td>
-  <td data-th="LOCATION" class="table__row--data">${tableObjct.location}</td>
-  <td class="table__row--button"><button>${tableObjct.button}</button></td>
-</tr>
-`;
-};
-
 let showsObject = [
   {
     dates: 'Mon Dec 17 2018',
@@ -50,10 +39,21 @@ let showsObject = [
   },
 ];
 
+const template = (tableObjct) => {
+  return `
+  <tr class="table__row">
+  <td data-th="DATES" class="table__row--data table__row--dates">${tableObjct.dates}</td>
+  <td data-th="VENUE" class="table__row--data">${tableObjct.venue}</td>
+  <td data-th="LOCATION" class="table__row--data">${tableObjct.location}</td>
+  <td class="table__row--data table__row--data-button"><button class="table__row--button">BUY TICKETS</button></td>
+  </tr>
+  <hr class="table__divider"/>
+`;
+};
+
 let staticTable = showsObject
   .map((values) => {
     return template(values);
   })
   .join('');
-
 table.innerHTML = staticTable;

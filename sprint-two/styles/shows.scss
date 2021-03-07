@@ -21,6 +21,7 @@ a {
   text-decoration: none;
 }
 
+// HERO ********************************
 .hero {
   @include flex-column;
   align-items: left;
@@ -51,6 +52,103 @@ a {
     & iframe {
       width: 100%;
       height: 95.45px;
+    }
+  }
+}
+
+// SHOW TABLE SECTION*******************
+.shows-container {
+  margin: 2rem 1rem 0 1rem;
+  @include tablet {
+    margin: 2rem 1.5rem 0 1.5rem;
+  }
+  @include desktop {
+    margin: 3rem 11.25rem 0 11.25rem;
+    @include flex-row;
+  }
+
+  &__title {
+    @include h2-header;
+    margin-bottom: 1.5rem;
+    @include desktop {
+      margin-right: 6.25rem;
+    }
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0 auto;
+  }
+  @include desktop {
+    width: 50.25rem;
+  }
+  &__row {
+    @include flex-column;
+    @include tablet {
+      display: table-row;
+      text-align: left;
+    }
+    @include desktop {
+      width: 50.25rem;
+    }
+    &--header {
+      display: none;
+      @include tablet {
+        display: table-cell;
+        color: $text-label;
+      }
+    }
+    &--data {
+      @include flex-column;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      @include tablet {
+        display: table-cell;
+        border-bottom: 1px solid $divider;
+      }
+      &:before {
+        content: attr(data-th);
+        font-weight: 600;
+        margin: 0 0 1.5rem 0;
+        color: $text-label;
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+    &--data-button {
+      text-align: right;
+    }
+    &--dates {
+      font-weight: bold;
+    }
+    &--button {
+      @include button;
+      width: 18rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      &:hover {
+        background-color: black;
+      }
+      @include tablet {
+        width: 10rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+  &__divider {
+    border: 1px solid $divider;
+    @include tablet {
+      display: none;
     }
   }
 }

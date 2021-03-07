@@ -57,6 +57,13 @@ $desktop: 1440px;
   flex-direction: column;
 }
 
+@mixin button {
+  color: white;
+  background-color: $band-primary-cta;
+  border: none;
+  border-radius: 0.25rem;
+}
+
 @mixin Profile-picture {
   display: flex;
   width: 48px;
@@ -181,7 +188,7 @@ $desktop: 1440px;
 
     &__items {
       width: 50%;
-      padding-bottom: 0.313rem;
+      padding-bottom: 0.4rem;
       margin: 1rem 0 0 0;
       @include tablet {
         width: auto;
@@ -201,7 +208,7 @@ $desktop: 1440px;
         }
       }
       &--bar {
-        border-bottom: 0.313px solid white;
+        border-bottom: 0.313rem solid white;
       }
       a {
         display: inline-block;
@@ -220,7 +227,7 @@ $desktop: 1440px;
       justify-content: space-between;
     }
   }
-  #biography {
+  #shows {
     font-weight: 600;
   }
 }
