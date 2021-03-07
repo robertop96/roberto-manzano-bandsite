@@ -24,40 +24,50 @@ a {
 // HERO ********************************
 .hero {
   @include flex-column;
-  align-items: left;
   background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/Images/showshero.jpeg);
   background-size: cover;
   width: 100%;
-  // min-height: 11.438rem;
   height: 472px;
   @include tablet {
-    // min-height: 25rem;
+    height: 670px;
   }
   @include desktop {
-    // min-height: 41.875rem;
+    @include flex-row;
   }
-  &__subtittle {
-    // @include side-margin;
-    margin-top: 64px;
-    margin-left: 16px;
-    margin-left: 16px;
+  &__subtitle {
     color: white;
+    margin: 64px 0 0 16px;
+    @include tablet {
+      margin: 96px 0 0 24px;
+    }
+    @include desktop {
+      margin: 160px 0 0 180px;
+    }
   }
   &__title {
     @include h1-hero;
-    @include side-margin;
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-left: 16px;
-    margin-bottom: 64px;
     color: white;
+    margin: 16px 0 64px 16px;
+    @include tablet {
+      margin: 16px 0 64px 16px;
+    }
+    @include desktop {
+      margin: 48px 0 64px 180px;
+    }
   }
   &__player-cont {
-    @include side-margin;
-    width: 288px;
-    & iframe {
+    margin: 0px 16px 0 16px;
+    @include tablet {
+      margin: 0 24px 0 24px;
+      width: 60%;
+      max-width: 400px;
+    }
+    @include desktop {
+      width: 436px;
+      margin: 265px 0 0 64px;
+    }
+    &--iframe {
       width: 100%;
-      height: 95.45px;
     }
   }
 }
