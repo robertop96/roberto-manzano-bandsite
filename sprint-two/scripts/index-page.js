@@ -1,5 +1,5 @@
-const conversation = document.querySelector('.conversation-container-posted'),
-  form = document.querySelector('form');
+const conversation = document.querySelector('.conversation-container-posted');
+const form = document.querySelector('form');
 
 const template = (singleCommentObj) => {
   return `
@@ -21,18 +21,18 @@ const template = (singleCommentObj) => {
 // SUBMIT EVENT THAT:
 // STOPS PAGE FROM RELOADING,
 // CREATES A FormData OBJECT
-// APPENDS DATE AND PHOTO PROPERTIES TO FormData
-// RE-ASSIGNS FormData OBJECT (fluidObject) INTO A NORMAL OBJECT.
-// CREATES ARTICLE Element, CREATES newArticle TO BE POPULATED BY fluidObject.
-// FILLS newArticle with CommentsTemplate STRING AND PREPEND IT TO START OF THE COMMENT Selection.
-
+// APPENDS DATE AND PHOTO PROPERTIES TO FormData OBJECT
+// TRANSFORMS FormData OBJECT INTO A NORMAL OBJECT (fluidObject).
+// PUSHES fluidObject into commentObject (contains all pre-made objects)
+// CALLS FUNCTION displayComment WITH commentObject AS PARAMETER (displayComment inserts into DOM)
+// RESETS THE FORM
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const currentDate = new Date(),
     date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
   let fluidObject = new FormData(e.target);
   fluidObject.append('date', date);
-  fluidObject.append('photo', 'http://placeimg.com/640/480');
+  fluidObject.append('photo', 'http://placeimg.com/48/48');
   fluidObject = Object.fromEntries(fluidObject);
   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
   displayComment(commentObject); /* REQUISITE */
@@ -41,9 +41,8 @@ form.addEventListener('submit', (e) => {
   // const commentsTemplate = template(fluidObject);
   // conversation.innerHTML = commentsTemplate + conversation.innerHTML;
 });
-
 // STATIC COMMENTS**********************
-// commentObject IS AN OBJECT THAT HOLDS THE staticComments.
+// commentObject IS AN OBJECT THAT HOLDS THE PRE-MATE COMMENTS, (staticComments).
 const commentObject = [
   {
     photo: 'http://placeimg.com/48/48/any',
@@ -68,10 +67,14 @@ const commentObject = [
   },
 ];
 // ------------------------------------------------
-// 1-LOOPS USING .MAP METHOD OVER THE commentObject OBJECT
-// AND PLACE ITS VALUES INTO A HTML TEMPLATE. THIS NEEDS TO BE
-// RETURNED SO WE CAN ACCESS IT VIA staticComments VARIABLE.
-
+// displayComment IS A FUNCTION THAT:
+// TAKES AND OBJECT AS A PARAMATER.
+// CREATES A staticComments VARIABLE AND ASSINGS IT THE OBJECT PARAMETER.
+// LOOP THE OBJECT PARAMETER (given by the function) WITH map() METHOD AND TAKES VALUES FROM THE OBJECT.
+// INSERT THOSE VALUES INTO A TEMPLATE VIA template FUNCTION
+// template FUNCTION TAKES THE VALUES FROM map() METHOD AS A PARAMETER AND RETURNS THE TEMPLATE.
+// USE join() TO PUT THE EVERYTHING INTO AN ARRAY.
+// INSERTS staticComments INTO THE DOM VIA innerHTML.
 let displayComment = (object) => {
   const staticComments = object
     .map((comment) => {
@@ -80,5 +83,5 @@ let displayComment = (object) => {
     .join('');
   conversation.innerHTML = staticComments; /* PREFER += */
 };
-
+// CALLING THE FUNCTION
 displayComment(commentObject);

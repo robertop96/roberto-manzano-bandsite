@@ -56,14 +56,12 @@ $desktop: 1440px;
   display: flex;
   flex-direction: column;
 }
-
 @mixin button {
   color: white;
   background-color: $band-primary-cta;
   border: none;
   border-radius: 0.25rem;
 }
-
 @mixin Profile-picture {
   display: flex;
   width: 48px;

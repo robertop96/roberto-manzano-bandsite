@@ -50,7 +50,6 @@ const template = (tableObjct) => {
   <hr class="table__divider"/>
 `;
 };
-
 let staticTable = showsObject
   .map((values) => {
     return template(values);

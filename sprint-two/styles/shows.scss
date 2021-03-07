@@ -20,7 +20,6 @@ li {
 a {
   text-decoration: none;
 }
-
 // HERO ********************************
 .hero {
   @include flex-column;
@@ -35,12 +34,15 @@ a {
     @include flex-row;
   }
   &__subtitle {
+    @include h3-subheader;
     color: white;
     margin: 4rem 0 0 1rem;
     @include tablet {
+      @include h2-header;
       margin: 6rem 0 0 1.5rem;
     }
     @include desktop {
+      @include h2-header;
       margin: 10rem 0 0 11.25rem;
     }
   }
@@ -87,7 +89,6 @@ a {
     }
   }
 }
-
 .table {
   border-collapse: collapse;
   display: flex;
