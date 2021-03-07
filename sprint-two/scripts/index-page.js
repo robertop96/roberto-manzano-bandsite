@@ -1,6 +1,34 @@
+// LOCATION VARIABLES ***
 const conversation = document.querySelector('.conversation-container-posted');
 const form = document.querySelector('form');
-
+// TIME SMART TIME RELATED VARIABLES ***
+const startDate = new Date(1.6151359e12);
+const currentDate = new Date();
+const fluidStartDate = new Date();
+// CALCULATES THE DIFFERENCE BETWEEN THE CURRENT DATE currentDate
+// AND A DEFINED DATE startDate, THE DEFINED DATE IS SET TO SUNDAY 7 2021
+const smartTime = (currentDate, startDate) => {
+  const msInMinutes = 60 * 1000,
+    msInHours = msInMinutes * 60,
+    msInDays = msInHours * 24,
+    msInMonths = msInDays * 30,
+    msInYears = msInDays * 365;
+  let difference = currentDate - startDate;
+  if (difference < msInMinutes) {
+    return Math.round(difference / 1000) + ' seconds ago';
+  } else if (difference < msInHours) {
+    return Math.round(difference / msInMinutes) + ' minutes ago';
+  } else if (difference < msInDays) {
+    return Math.round(difference / msInHours) + ' hours ago';
+  } else if (difference < msInMonths) {
+    return `approximately  ${Math.round(difference / msInDays)} days ago`;
+  } else if (difference < msInYears) {
+    return `approximately ${Math.round(difference / msInMonths)} months ago`;
+  } else {
+    return `approximately ${Math.round(difference / msInYears)} years ago`;
+  }
+};
+// VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (singleCommentObj) => {
   return `
   <article class="comment-container">
@@ -28,11 +56,9 @@ const template = (singleCommentObj) => {
 // RESETS THE FORM
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const currentDate = new Date(),
-    date = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
   let fluidObject = new FormData(e.target);
-  fluidObject.append('date', date);
-  fluidObject.append('photo', 'http://placeimg.com/48/48');
+  fluidObject.append('date', smartTime(currentDate, fluidStartDate - 1000));
+  fluidObject.append('photo', 'https://loremflickr.com/48/48');
   fluidObject = Object.fromEntries(fluidObject);
   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
   displayComment(commentObject); /* REQUISITE */
@@ -45,28 +71,27 @@ form.addEventListener('submit', (e) => {
 // commentObject IS AN OBJECT THAT HOLDS THE PRE-MATE COMMENTS, (staticComments).
 const commentObject = [
   {
-    photo: 'http://placeimg.com/48/48/any',
+    photo: 'https://picsum.photos/48/48',
     name: 'Michael Lyons',
-    date: '12/18/2018',
+    date: smartTime(currentDate, startDate),
     comment:
       'They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.',
   },
   {
-    photo: 'http://placeimg.com/48/48/any',
+    photo: 'https://source.unsplash.com/random/48x48',
     name: 'Gary Wong',
-    date: '12/12/2018',
+    date: smartTime(currentDate, startDate),
     comment:
       "Every time I see him shred I feel so motivated to get off my couch and hop on my board. he's so talented! I wish I can ride like him one day so I can really enjoy myself!",
   },
   {
     photo: 'http://placeimg.com/48/48/any',
     name: 'Theodore Duncan',
-    date: '11/15/2018',
+    date: smartTime(currentDate, startDate),
     comment:
       "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He's definitely my favorite ever!",
   },
 ];
-// ------------------------------------------------
 // displayComment IS A FUNCTION THAT:
 // TAKES AND OBJECT AS A PARAMATER.
 // CREATES A staticComments VARIABLE AND ASSINGS IT THE OBJECT PARAMETER.
