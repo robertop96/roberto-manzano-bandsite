@@ -4,7 +4,7 @@ const form = document.querySelector('form');
 // TIME SMART TIME RELATED VARIABLES ***
 const startDate = new Date(1.6151359e12);
 const currentDate = new Date();
-const fluidStartDate = new Date();
+const fluidStartDate = currentDate - 1000;
 // CALCULATES THE DIFFERENCE BETWEEN THE CURRENT DATE currentDate
 // AND A DEFINED DATE startDate, THE DEFINED DATE IS SET TO SUNDAY 7 2021
 const smartTime = (currentDate, startDate) => {
@@ -57,7 +57,7 @@ const template = (singleCommentObj) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let fluidObject = new FormData(e.target);
-  fluidObject.append('date', smartTime(currentDate, fluidStartDate - 1000));
+  fluidObject.append('date', smartTime(currentDate, fluidStartDate));
   fluidObject.append('photo', 'https://loremflickr.com/48/48');
   fluidObject = Object.fromEntries(fluidObject);
   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
