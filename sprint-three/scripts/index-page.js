@@ -30,14 +30,15 @@ const smartTime = (currentDate, startDate) => {
 };
 // VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (singleCommentObj) => {
+  let date = new Date(singleCommentObj.timestamp).toLocaleDateString();
   return `
   <article class="comment-container">
   <figure class="comment-container__picture">
-    <img class="comment-container__picture-img" src="${singleCommentObj.photo}" alt="profile picture" />
+    <img class="comment-container__picture-img" src="https://picsum.photos/48/48" alt="profile picture" />
   </figure>
   <div class="comment-body">
     <h3 class="comment-body__name">${singleCommentObj.name}</h3>
-    <div class="comment-body__date">${singleCommentObj.date}</div>
+    <div class="comment-body__date">${date}</div>
     <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
   </div>
   </article>
@@ -54,21 +55,42 @@ const template = (singleCommentObj) => {
 // PUSHES fluidObject into commentObject (contains all pre-made objects)
 // CALLS FUNCTION displayComment WITH commentObject AS PARAMETER (displayComment inserts into DOM)
 // RESETS THE FORM
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let fluidObject = new FormData(e.target);
-  fluidObject.append('date', smartTime(currentDate, fluidStartDate));
-  fluidObject.append('photo', 'https://loremflickr.com/48/48');
   fluidObject = Object.fromEntries(fluidObject);
-  commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
-  displayComment(commentObject); /* REQUISITE */
-  form.reset();
-
-  // const commentsTemplate = template(fluidObject);
-  // conversation.innerHTML = commentsTemplate + conversation.innerHTML;
+  // console.log(fluidObject);
+  axios
+    .post('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f&content-type=application/json', {
+      name: fluidObject.name,
+      comment: fluidObject.comment,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
+
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   let fluidObject = new FormData(e.target);
+//   fluidObject.append('date', smartTime(currentDate, fluidStartDate));
+//   fluidObject.append('photo', 'https://loremflickr.com/48/48');
+//   fluidObject = Object.fromEntries(fluidObject);
+//   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
+// displayComment(commentObject); /* REQUISITE */
+//   form.reset();
+
+//   // const commentsTemplate = template(fluidObject);
+//   // conversation.innerHTML = commentsTemplate + conversation.innerHTML;
+// });
+
 // STATIC COMMENTS**********************
 // commentObject IS AN OBJECT THAT HOLDS THE PRE-MATE COMMENTS, (staticComments).
+
 const commentObject = [
   {
     photo: 'https://picsum.photos/48/48',
@@ -92,6 +114,7 @@ const commentObject = [
       "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He's definitely my favorite ever!",
   },
 ];
+
 // displayComment IS A FUNCTION THAT:
 // TAKES AND OBJECT AS A PARAMATER.
 // CREATES A staticComments VARIABLE AND ASSINGS IT THE OBJECT PARAMETER.
@@ -100,13 +123,33 @@ const commentObject = [
 // template FUNCTION TAKES THE VALUES FROM map() METHOD AS A PARAMETER AND RETURNS THE TEMPLATE.
 // USE join() TO PUT THE EVERYTHING INTO AN ARRAY.
 // INSERTS staticComments INTO THE DOM VIA innerHTML.
-let displayComment = (object) => {
-  const staticComments = object
-    .map((comment) => {
-      return template(comment);
-    })
-    .join('');
-  conversation.innerHTML = staticComments; /* PREFER += */
-};
-// CALLING THE FUNCTION
-displayComment(commentObject);
+
+// ***PREVIOUS****************************************************
+
+// let displayComment = (object) => {
+//   const staticComments = object
+//     .map((comment) => {
+//       return template(comment);
+//     })
+//     .join('');
+//   conversation.innerHTML = staticComments; /* PREFER += */
+// };
+
+axios
+  .get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
+  .then((response) => {
+    // let displayComment = (object) => {
+    let array = response.data;
+    let staticComments = array
+      .map((values) => {
+        return template(values);
+      })
+      .join('');
+    console.log(staticComments);
+    conversation.innerHTML = staticComments;
+    // };
+    // displayComment(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });

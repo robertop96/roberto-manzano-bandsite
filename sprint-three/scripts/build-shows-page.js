@@ -19,13 +19,14 @@ const template = (tableObject) => {
 axios
   .get('https://project-1-api.herokuapp.com/showdates?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
   .then((response) => {
-    let tableObject = response.data;
-    let myTable = tableObject
+    // let tableObject = response.data;
+    let myTable = response.data
       .map((values) => {
         return template(values);
       })
       .join('');
     table.innerHTML = myTable;
+    console.log(response.data[1].date);
   })
   .catch((error) => {
     console.log(error);
