@@ -291,6 +291,7 @@ a {
   }
   &__name {
     height: 3rem;
+    padding: 0.5rem;
     background-color: $text-field-background;
     border: 1px solid black;
     border-radius: 0.313rem;
@@ -310,6 +311,7 @@ a {
     }
   }
   &__textarea {
+    padding: 0.5rem;
     height: 6rem;
     background-color: $text-field-background;
     border-radius: 0.313rem;
@@ -483,4 +485,8 @@ a {
       margin-top: 2.5rem;
     }
   }
+}
+
+.comment-body__interaction--delete {
+  background-color: red;
 }

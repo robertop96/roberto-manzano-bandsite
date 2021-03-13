@@ -524,6 +524,7 @@ a {
 }
 .conversation-form__name {
   height: 3rem;
+  padding: 0.5rem;
   background-color: #fafafa;
   border: 1px solid black;
   border-radius: 0.313rem;
@@ -577,6 +578,7 @@ a {
   }
 }
 .conversation-form__textarea {
+  padding: 0.5rem;
   height: 6rem;
   background-color: #fafafa;
   border-radius: 0.313rem;
@@ -899,4 +901,8 @@ a {
   .footer-info .footer-copyright {
     margin-top: 2.5rem;
   }
+}
+
+.comment-body__interaction--delete {
+  background-color: red;
 }/*# sourceMappingURL=main.css.map */

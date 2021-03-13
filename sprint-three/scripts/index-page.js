@@ -3,11 +3,11 @@ const conversation = document.querySelector('.conversation-container-posted');
 const form = document.querySelector('form');
 // Array THAT HOLDS ALL MY COMMENT OBJECTS
 let objectsArray;
+
 // VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (singleCommentObj) => {
-  // let date = new Date(singleCommentObj.timestamp).toLocaleDateString();
   return `
-  <article class="comment-container">
+  <article id="${singleCommentObj.id}" class="comment-container">
   <figure class="comment-container__picture">
     <img class="comment-container__picture-img" src="${singleCommentObj.image}" alt="profile picture" />
   </figure>
@@ -15,6 +15,10 @@ const template = (singleCommentObj) => {
     <h3 class="comment-body__name">${singleCommentObj.name}</h3>
     <div class="comment-body__date">${singleCommentObj.date}</div>
     <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
+    <div onClick="myFunction()" class="comment-body__interaction">
+      <div class="comment-body__interaction--likes">Likes</div>
+      <button  class="comment-body__interaction--delete">Delete</button>
+    </div>
   </div>
   </article>
   <hr class="comment-container__divider"/>
@@ -82,3 +86,19 @@ form.addEventListener('submit', (e) => {
       console.log(error);
     });
 });
+
+// DELETE FUNCTION
+function myFunction() {
+  const commentArticle = event.path[3];
+  const id = commentArticle.getAttribute('id');
+  axios
+    .delete(`https://project-1-api.herokuapp.com/comments/${id}/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)
+    .then((response) => {
+      commentArticle.remove();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// LIKE FUNCTION
