@@ -34,12 +34,14 @@ const displayComment = (object) => {
     .sort((a, b) => b.timestamp - a.timestamp)
     .map((values) => {
       values.image = 'https://loremflickr.com/48/48';
-      values.date = new Date(values.timestamp).toLocaleDateString();
+      values.date = moment.unix(values.timestamp / 1000).fromNow();
       return template(values);
     })
     .join('');
   conversation.innerHTML = staticComments;
 };
+
+// console.log(moment.unix('1552456746').fromNow());
 
 // Gets AN ARRAY OF COMMENTS FROM THE api AND ASSIGNS IT TO objectsArray
 // CALLS displayComment WITH objectsArray AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
