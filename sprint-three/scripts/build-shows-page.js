@@ -1,6 +1,5 @@
 // LOCATION VARIABLES ***
 const table = document.querySelector('.table__body');
-
 // VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (tableObject) => {
   return `
@@ -13,24 +12,32 @@ const template = (tableObject) => {
   <hr class="table__divider"/>
 `;
 };
-// LOOPs OVER MY response.data (object gotten via API)USING map() METHOD TO EXTRACT ITS VALUES
-// AND PLACE THEM INSIDE MY template USING "VALUES" AS PLACEHOLDER OF THE ACTUAL
-// OBJECTS NAME response.data, THEN INSERT IT INTO THE DOM VIA innerHTML
+
+// displayTable IS A FUNCTION THAT:
+// TAKES AN ARRAY OF OBJECTS AS A PARAMETER.
+// CREATES StaticShowsObject VARIABLE AND ASSIGNS THE ARRAY OF OBJECTS TO IT.
+// .map LOOPS THE ARRAY, UPDATING THE date PROPERTY INTO DESIRED FORMAT
+// template FUNCTION TAKES AN OBJECT AS PARAMETER AND ASSIGNS ITS PROPERTIES TO A TEMPLATE
+// .join() WILL CONCATENATE ALL THE ELEMENTS IN THE ARRAY
+// StaticShowsObject IS INSERTED INTO THE DOM VIA innerHTML
+const displayTable = (object) => {
+  let StaticShowsObject = object
+    .map((values) => {
+      values.date = moment(values.date).format('ddd MMM D YYYY');
+      return template(values);
+    })
+    .join('');
+  table.innerHTML = StaticShowsObject;
+};
+
+// Gets AN ARRAY OF OBJECTS FROM THE api AND ASSIGNS IT TO myTable
+// CALLS displayTable WITH myTable AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
 axios
   .get('https://project-1-api.herokuapp.com/showdates?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
   .then((response) => {
-    // let tableObject = response.data;
-    let myTable = response.data
-      .map((values) => {
-        return template(values);
-      })
-      .join('');
-    table.innerHTML = myTable;
-    console.log(response.data[1].date);
+    let myTable = response.data;
+    displayTable(myTable);
   })
   .catch((error) => {
     console.log(error);
   });
-
-let a = new Date('SAT JUN 16');
-console.log(a);

@@ -41,9 +41,7 @@ const displayComment = (object) => {
   conversation.innerHTML = staticComments;
 };
 
-// console.log(moment.unix('1552456746').fromNow());
-
-// Gets AN ARRAY OF COMMENTS FROM THE api AND ASSIGNS IT TO objectsArray
+// Gets AN ARRAY OF OBJECTS FROM THE api AND ASSIGNS IT TO objectsArray
 // CALLS displayComment WITH objectsArray AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
 axios
   .get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
