@@ -1,155 +1,84 @@
 // LOCATION VARIABLES ***
 const conversation = document.querySelector('.conversation-container-posted');
 const form = document.querySelector('form');
-// TIME SMART TIME RELATED VARIABLES ***
-const startDate = new Date(1.6151359e12);
-const currentDate = new Date();
-const fluidStartDate = currentDate - 1000;
-// CALCULATES THE DIFFERENCE BETWEEN THE CURRENT DATE currentDate
-// AND A DEFINED DATE startDate, THE DEFINED DATE IS SET TO SUNDAY 7 2021
-const smartTime = (currentDate, startDate) => {
-  const msInMinutes = 60 * 1000,
-    msInHours = msInMinutes * 60,
-    msInDays = msInHours * 24,
-    msInMonths = msInDays * 30,
-    msInYears = msInDays * 365;
-  let difference = currentDate - startDate;
-  if (difference < msInMinutes) {
-    return Math.round(difference / 1000) + ' seconds ago';
-  } else if (difference < msInHours) {
-    return Math.round(difference / msInMinutes) + ' minutes ago';
-  } else if (difference < msInDays) {
-    return Math.round(difference / msInHours) + ' hours ago';
-  } else if (difference < msInMonths) {
-    return `approximately  ${Math.round(difference / msInDays)} days ago`;
-  } else if (difference < msInYears) {
-    return `approximately ${Math.round(difference / msInMonths)} months ago`;
-  } else {
-    return `approximately ${Math.round(difference / msInYears)} years ago`;
-  }
-};
+// Array THAT HOLDS ALL MY COMMENT OBJECTS
+let objectsArray;
 // VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (singleCommentObj) => {
-  let date = new Date(singleCommentObj.timestamp).toLocaleDateString();
+  // let date = new Date(singleCommentObj.timestamp).toLocaleDateString();
   return `
   <article class="comment-container">
   <figure class="comment-container__picture">
-    <img class="comment-container__picture-img" src="https://picsum.photos/48/48" alt="profile picture" />
+    <img class="comment-container__picture-img" src="${singleCommentObj.image}" alt="profile picture" />
   </figure>
   <div class="comment-body">
     <h3 class="comment-body__name">${singleCommentObj.name}</h3>
-    <div class="comment-body__date">${date}</div>
+    <div class="comment-body__date">${singleCommentObj.date}</div>
     <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
   </div>
   </article>
   <hr class="comment-container__divider"/>
   `;
 };
-// INTERACTIVE COMMENTS**********************
-// ----------------------------------------------------------
-// SUBMIT EVENT THAT:
-// STOPS PAGE FROM RELOADING,
-// CREATES A FormData OBJECT
-// APPENDS DATE AND PHOTO PROPERTIES TO FormData OBJECT
-// TRANSFORMS FormData OBJECT INTO A NORMAL OBJECT (fluidObject).
-// PUSHES fluidObject into commentObject (contains all pre-made objects)
-// CALLS FUNCTION displayComment WITH commentObject AS PARAMETER (displayComment inserts into DOM)
-// RESETS THE FORM
 
+// displayComment IS A FUNCTION THAT:
+// TAKES AN ARRAY OF OBJECTS AS A PARAMETER.
+// CREATES staticComments VARIABLE AND ASSIGNS THE ARRAY OF OBJECTS TO IT.
+// .sort WILL RE-ARRANGE THE ORDER OF THE OBJECTS USING timestamp AS THE ORDER
+// .map LOOPS THE ARRAY, CREATING AN image AND A date PROPERTY INSIDE EACH OBJECT
+// template FUNCTION TAKES AN OBJECT AS PARAMETER AND ASSIGNS ITS PROPERTIES TO A TEMPLATE
+// .join() WILL CONCATENATE ALL THE ELEMENTS IN THE ARRAY
+// staticComments IS INSERTED INTO THE DOM VIA innerHTML
+const displayComment = (object) => {
+  let staticComments = object
+    .sort((a, b) => b.timestamp - a.timestamp)
+    .map((values) => {
+      values.image = 'https://loremflickr.com/48/48';
+      values.date = new Date(values.timestamp).toLocaleDateString();
+      return template(values);
+    })
+    .join('');
+  conversation.innerHTML = staticComments;
+};
+
+// Gets AN ARRAY OF COMMENTS FROM THE api AND ASSIGNS IT TO objectsArray
+// CALLS displayComment WITH objectsArray AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
+axios
+  .get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
+  .then((response) => {
+    objectsArray = response.data;
+    displayComment(objectsArray);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// INTERACTIVE COMMENTS**********************
+
+// SUBMIT EVENT THAT:
+// STOPS PAGE FROM RELOADING AND CREATES A NEW FormData CALLED fluidObject
+// RE-ASSIGNS fluidObject BY USING THE Object.fromEntries() METHOD
+// ( Object.fromEntries() ) METHOD TAKES A LIST OF KEY-VALUE PAIRS AND RETURNS A NEW OBJECT WITH THOSE PROPERTIES
+// ------------------------------------------------------------------------------------------------------------------
+// Posts THE PROPERTIES OF fluidObject.
+// .then RECEIVES THE OBJECT OBJECT POSTED AS A RESPONSE, THAT OBJECT IS PUSHED TO objectsArray.
+// ObjectsArray NOW HOLDS THE NEW OBJECT AND ALL PREVIOUS OBJECTS FROM THE Get REQUEST.
+// objectsArray GETS INSERTED INTO THE DOM VIA displayComment FUNCTION.
+// PUSHES fluidObject into commentObject (contains all pre-made objects)
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let fluidObject = new FormData(e.target);
   fluidObject = Object.fromEntries(fluidObject);
-  // console.log(fluidObject);
   axios
     .post('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f&content-type=application/json', {
       name: fluidObject.name,
       comment: fluidObject.comment,
     })
     .then((response) => {
-      console.log(response);
+      objectsArray.push(response.data);
+      displayComment(objectsArray);
     })
     .catch((error) => {
       console.log(error);
     });
 });
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   let fluidObject = new FormData(e.target);
-//   fluidObject.append('date', smartTime(currentDate, fluidStartDate));
-//   fluidObject.append('photo', 'https://loremflickr.com/48/48');
-//   fluidObject = Object.fromEntries(fluidObject);
-//   commentObject.unshift(fluidObject); /*  REQUISITE, UNSHIFT INSTEAD OF PUSH ( ADDED TO THE TOP);  */
-// displayComment(commentObject); /* REQUISITE */
-//   form.reset();
-
-//   // const commentsTemplate = template(fluidObject);
-//   // conversation.innerHTML = commentsTemplate + conversation.innerHTML;
-// });
-
-// STATIC COMMENTS**********************
-// commentObject IS AN OBJECT THAT HOLDS THE PRE-MATE COMMENTS, (staticComments).
-
-const commentObject = [
-  {
-    photo: 'https://picsum.photos/48/48',
-    name: 'Michael Lyons',
-    date: smartTime(currentDate, startDate),
-    comment:
-      'They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.',
-  },
-  {
-    photo: 'https://source.unsplash.com/random/48x48',
-    name: 'Gary Wong',
-    date: smartTime(currentDate, startDate),
-    comment:
-      "Every time I see him shred I feel so motivated to get off my couch and hop on my board. he's so talented! I wish I can ride like him one day so I can really enjoy myself!",
-  },
-  {
-    photo: 'http://placeimg.com/48/48/any',
-    name: 'Theodore Duncan',
-    date: smartTime(currentDate, startDate),
-    comment:
-      "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He's definitely my favorite ever!",
-  },
-];
-
-// displayComment IS A FUNCTION THAT:
-// TAKES AND OBJECT AS A PARAMATER.
-// CREATES A staticComments VARIABLE AND ASSINGS IT THE OBJECT PARAMETER.
-// LOOP THE OBJECT PARAMETER (given by the function) WITH map() METHOD AND TAKES VALUES FROM THE OBJECT.
-// INSERT THOSE VALUES INTO A TEMPLATE VIA template FUNCTION
-// template FUNCTION TAKES THE VALUES FROM map() METHOD AS A PARAMETER AND RETURNS THE TEMPLATE.
-// USE join() TO PUT THE EVERYTHING INTO AN ARRAY.
-// INSERTS staticComments INTO THE DOM VIA innerHTML.
-
-// ***PREVIOUS****************************************************
-
-// let displayComment = (object) => {
-//   const staticComments = object
-//     .map((comment) => {
-//       return template(comment);
-//     })
-//     .join('');
-//   conversation.innerHTML = staticComments; /* PREFER += */
-// };
-
-axios
-  .get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
-  .then((response) => {
-    // let displayComment = (object) => {
-    let array = response.data;
-    let staticComments = array
-      .map((values) => {
-        return template(values);
-      })
-      .join('');
-    console.log(staticComments);
-    conversation.innerHTML = staticComments;
-    // };
-    // displayComment(response);
-  })
-  .catch((error) => {
-    console.log(error);
-  });

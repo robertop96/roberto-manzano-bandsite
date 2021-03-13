@@ -31,3 +31,6 @@ axios
   .catch((error) => {
     console.log(error);
   });
+
+let a = new Date('SAT JUN 16');
+console.log(a);
