@@ -337,6 +337,7 @@ a {
     }
   }
 }
+// FIXED CONVERSATIONS**
 .conversation-container-posted {
   @include flex-column;
   align-items: center;
@@ -364,6 +365,7 @@ a {
 }
 .comment-body {
   @include flex-row;
+  width: auto;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 14rem;
@@ -384,11 +386,12 @@ a {
     color: $text-label;
   }
   &__comment {
-    width: 1.5rem;
+    @include h4-paragraph;
     @include h5-labels;
     flex: 100%;
+    width: 1.5rem;
     margin-bottom: 1.5rem;
-    @include h4-paragraph;
+    word-wrap: break-word;
   }
   &__interaction {
     display: flex;
@@ -399,7 +402,11 @@ a {
       margin-right: 10px;
       width: 3rem;
       &:hover {
-        background-color: black;
+        // background-color: black;
+        text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+        transform: scale(1.05);
+        transition: 0.2s;
+        font-weight: bold;
       }
     }
     &--delete {
@@ -408,7 +415,9 @@ a {
       margin-left: auto;
       width: 3rem;
       &:hover {
-        background-color: black;
+        background-color: rgb(200, 34, 34);
+        text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+        transform: scale(0.95);
       }
     }
     @include tablet {

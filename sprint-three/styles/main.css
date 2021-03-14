@@ -687,6 +687,7 @@ a {
 .comment-body {
   display: flex;
   flex-direction: row;
+  width: auto;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 14rem;
@@ -726,24 +727,25 @@ a {
   }
 }
 .comment-body__comment {
-  width: 1.5rem;
+  font-size: 0.813rem;
+  line-height: 1.125rem;
   font-size: 0.75rem;
   line-height: 1.25rem;
   flex: 100%;
+  width: 1.5rem;
   margin-bottom: 1.5rem;
-  font-size: 0.813rem;
-  line-height: 1.125rem;
-}
-@media (min-width: 768px) {
-  .comment-body__comment {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-  }
+  word-wrap: break-word;
 }
 @media (min-width: 768px) {
   .comment-body__comment {
     font-size: 0.875rem;
     line-height: 1.375rem;
+  }
+}
+@media (min-width: 768px) {
+  .comment-body__comment {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
   }
 }
 .comment-body__interaction {
@@ -760,7 +762,10 @@ a {
   width: 3rem;
 }
 .comment-body__interaction--likes:hover {
-  background-color: black;
+  text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+  transform: scale(1.05);
+  transition: 0.2s;
+  font-weight: bold;
 }
 .comment-body__interaction--delete {
   color: white;
@@ -772,7 +777,9 @@ a {
   width: 3rem;
 }
 .comment-body__interaction--delete:hover {
-  background-color: black;
+  background-color: #c82222;
+  text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+  transform: scale(0.95);
 }
 @media (min-width: 768px) {
   .comment-body__interaction {

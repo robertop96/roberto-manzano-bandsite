@@ -54,8 +54,6 @@ let getRequest = axios
     console.log(error);
   });
 
-// INTERACTIVE COMMENTS**********************
-
 // EVENT HANDLER ON SUBMIT, TAKES THE VALUES FROM THE FORM VIA FormData Object and Object.fromEntries.
 // POST THE VALUES TAKEN FROM FORM INTO THE api, PUSHES THE NEW OBJECT INTO objectArray AND CALLS displayComment
 // WITH THE UPDATED ARRAY.
@@ -70,6 +68,7 @@ form.addEventListener('submit', (e) => {
     })
     .then((response) => {
       objectsArray.push(response.data);
+      console.log(objectsArray);
       displayComment(objectsArray);
     })
     .catch((error) => {
@@ -77,7 +76,6 @@ form.addEventListener('submit', (e) => {
     });
   e.target.reset();
 });
-
 // LIKE FUNCTION
 function like(event) {
   const id = event.target.id.split('--')[2];
@@ -99,17 +97,20 @@ function like(event) {
 function remove(event) {
   const id = event.target.id.split('--')[2];
   let commentArticle = document.getElementById(`${id}`);
-  axios
-    .delete(`https://project-1-api.herokuapp.com/comments/${id}/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)
-    .then((response) => {
-      commentArticle.remove();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  let result = confirm('Want to delete?');
+  if (result) {
+    axios
+      .delete(`https://project-1-api.herokuapp.com/comments/${id}/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)
+      .then((response) => {
+        commentArticle.remove();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
-
-// USE addEvents TO LOCATE THE BUTTONS AS THEY ARE NOT AVAILABLE OUT-SITE OF THE PROMISE.
+//USE addEvents TO LOCATE THE BUTTONS AS displayComment IS AN ASYNCHRONOUS ACTION CALLBACK.
+// THE BUTTON ID CANNOT BE REACH OUTSIDE OF THE FUNCTION.
 function addEvents(commentObject) {
   const likeButton = document.querySelector(`#like--button--${commentObject.id}`);
   likeButton.addEventListener('click', like);
