@@ -25,7 +25,6 @@ const template = (singleCommentObj) => {
   <hr class="comment-container__divider"/>
   `;
 };
-
 // TAKES AN ARRAY OF OBJECTS, MODIFIES IT VIA .sort AND .map AND INSERTS IT INTO template FUNCTION
 // USES innerHTML TO PLACE IT WITHIN THE DOM.
 // MAPS OVER THE OBJECT ARRAY AGAIN USING addEvents AS FUNCTION REFERENCE.
@@ -35,13 +34,13 @@ const displayComment = (object) => {
     .map((values) => {
       values.image = 'https://loremflickr.com/48/48';
       values.date = moment.unix(values.timestamp / 1000).fromNow();
+      if (!values.likes) values.likes = ''; //MAKE values.likes EMPTY STRING WHEN VALUE IS 0
       return template(values);
     })
     .join('');
   conversation.innerHTML = staticComments;
   object.map(addEvents);
 };
-
 // Gets AN ARRAY OF OBJECTS FROM THE api AND ASSIGNS IT TO objectsArray
 // CALLS displayComment WITH objectsArray AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
 let getRequest = axios
@@ -53,7 +52,6 @@ let getRequest = axios
   .catch((error) => {
     console.log(error);
   });
-
 // EVENT HANDLER ON SUBMIT, TAKES THE VALUES FROM THE FORM VIA FormData Object and Object.fromEntries.
 // POST THE VALUES TAKEN FROM FORM INTO THE api, PUSHES THE NEW OBJECT INTO objectArray AND CALLS displayComment
 // WITH THE UPDATED ARRAY.
@@ -84,7 +82,7 @@ function like(event) {
     .then((response) => {
       return axios.get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f');
     })
-    // Axios.get .then
+    // line 83 Axios.get .then()
     .then((response) => {
       objectsArray = response.data;
       displayComment(objectsArray);
@@ -97,7 +95,7 @@ function like(event) {
 function remove(event) {
   const id = event.target.id.split('--')[2];
   let commentArticle = document.getElementById(`${id}`);
-  let result = confirm('Want to delete?');
+  let result = confirm('Are you sure you want to delete this comment?');
   if (result) {
     axios
       .delete(`https://project-1-api.herokuapp.com/comments/${id}/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)

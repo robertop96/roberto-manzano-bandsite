@@ -395,14 +395,19 @@ a {
   }
   &__interaction {
     display: flex;
+    align-items: baseline;
     width: 100%;
+    & p {
+      color: rgba(228, 194, 85, 0.829);
+      font-weight: 600;
+      text-shadow: 0px 0px 0px rgb(24, 24, 23);
+    }
     &--likes {
       @include button;
-      color: white;
+      width: 3.5rem;
+      padding: 0.5rem;
       margin-right: 10px;
-      width: 3rem;
       &:hover {
-        // background-color: black;
         text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
         transform: scale(1.05);
         transition: 0.2s;
@@ -411,9 +416,9 @@ a {
     }
     &--delete {
       @include button;
-      color: white;
+      width: 3.5rem;
+      padding: 0.5rem;
       margin-left: auto;
-      width: 3rem;
       &:hover {
         background-color: rgb(200, 34, 34);
         text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
