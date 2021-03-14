@@ -1,4 +1,4 @@
-// LOCATION VARIABLES ***
+//  LOCATION VARIABLES ***
 const conversation = document.querySelector('.conversation-container-posted');
 const form = document.querySelector('form');
 // Array THAT HOLDS ALL MY COMMENT OBJECTS
@@ -15,9 +15,10 @@ const template = (singleCommentObj) => {
     <h3 class="comment-body__name">${singleCommentObj.name}</h3>
     <div class="comment-body__date">${singleCommentObj.date}</div>
     <article class="comment-body__comment"><p>${singleCommentObj.comment}</p></article>
-    <div onClick="myFunction()" class="comment-body__interaction">
-      <div class="comment-body__interaction--likes">Likes</div>
-      <button  class="comment-body__interaction--delete">Delete</button>
+    <div class="comment-body__interaction">
+      <button id="like--button--${singleCommentObj.id}" class="comment-body__interaction--likes">Likes</button>
+      <p>${singleCommentObj.likes}</p>
+      <button id="remove--button--${singleCommentObj.id}" class="comment-body__interaction--delete">Delete</button>
     </div>
   </div>
   </article>
@@ -25,14 +26,9 @@ const template = (singleCommentObj) => {
   `;
 };
 
-// displayComment IS A FUNCTION THAT:
-// TAKES AN ARRAY OF OBJECTS AS A PARAMETER.
-// CREATES staticComments VARIABLE AND ASSIGNS THE ARRAY OF OBJECTS TO IT.
-// .sort WILL RE-ARRANGE THE ORDER OF THE OBJECTS USING timestamp AS THE ORDER
-// .map LOOPS THE ARRAY, CREATING AN image AND A date PROPERTY INSIDE EACH OBJECT
-// template FUNCTION TAKES AN OBJECT AS PARAMETER AND ASSIGNS ITS PROPERTIES TO A TEMPLATE
-// .join() WILL CONCATENATE ALL THE ELEMENTS IN THE ARRAY
-// staticComments IS INSERTED INTO THE DOM VIA innerHTML
+// TAKES AN ARRAY OF OBJECTS, MODIFIES IT VIA .sort AND .map AND INSERTS IT INTO template FUNCTION
+// USES innerHTML TO PLACE IT WITHIN THE DOM.
+// MAPS OVER THE OBJECT ARRAY AGAIN USING addEvents AS FUNCTION REFERENCE.
 const displayComment = (object) => {
   let staticComments = object
     .sort((a, b) => b.timestamp - a.timestamp)
@@ -43,11 +39,12 @@ const displayComment = (object) => {
     })
     .join('');
   conversation.innerHTML = staticComments;
+  object.map(addEvents);
 };
 
 // Gets AN ARRAY OF OBJECTS FROM THE api AND ASSIGNS IT TO objectsArray
 // CALLS displayComment WITH objectsArray AS A PARAMETER TO INSERT ITS CONTENT INTO THE DOM
-axios
+let getRequest = axios
   .get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f')
   .then((response) => {
     objectsArray = response.data;
@@ -59,16 +56,9 @@ axios
 
 // INTERACTIVE COMMENTS**********************
 
-// SUBMIT EVENT THAT:
-// STOPS PAGE FROM RELOADING AND CREATES A NEW FormData CALLED fluidObject
-// RE-ASSIGNS fluidObject BY USING THE Object.fromEntries() METHOD
-// ( Object.fromEntries() ) METHOD TAKES A LIST OF KEY-VALUE PAIRS AND RETURNS A NEW OBJECT WITH THOSE PROPERTIES
-// ------------------------------------------------------------------------------------------------------------------
-// Posts THE PROPERTIES OF fluidObject.
-// .then RECEIVES THE OBJECT OBJECT POSTED AS A RESPONSE, THAT OBJECT IS PUSHED TO objectsArray.
-// ObjectsArray NOW HOLDS THE NEW OBJECT AND ALL PREVIOUS OBJECTS FROM THE Get REQUEST.
-// objectsArray GETS INSERTED INTO THE DOM VIA displayComment FUNCTION.
-// PUSHES fluidObject into commentObject (contains all pre-made objects)
+// EVENT HANDLER ON SUBMIT, TAKES THE VALUES FROM THE FORM VIA FormData Object and Object.fromEntries.
+// POST THE VALUES TAKEN FROM FORM INTO THE api, PUSHES THE NEW OBJECT INTO objectArray AND CALLS displayComment
+// WITH THE UPDATED ARRAY.
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let fluidObject = new FormData(e.target);
@@ -85,12 +75,30 @@ form.addEventListener('submit', (e) => {
     .catch((error) => {
       console.log(error);
     });
+  e.target.reset();
 });
 
-// DELETE FUNCTION
-function myFunction() {
-  const commentArticle = event.path[3];
-  const id = commentArticle.getAttribute('id');
+// LIKE FUNCTION
+function like(event) {
+  const id = event.target.id.split('--')[2];
+  axios
+    .put(`https://project-1-api.herokuapp.com/comments/${id}/like/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)
+    .then((response) => {
+      return axios.get('https://project-1-api.herokuapp.com/comments?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f');
+    })
+    // Axios.get .then
+    .then((response) => {
+      objectsArray = response.data;
+      displayComment(objectsArray);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+// REMOVE FUNCTION
+function remove(event) {
+  const id = event.target.id.split('--')[2];
+  let commentArticle = document.getElementById(`${id}`);
   axios
     .delete(`https://project-1-api.herokuapp.com/comments/${id}/?api_key=7d8d085e-486e-42dc-b836-58009cbfa68f`)
     .then((response) => {
@@ -101,4 +109,10 @@ function myFunction() {
     });
 }
 
-// LIKE FUNCTION
+// USE addEvents TO LOCATE THE BUTTONS AS THEY ARE NOT AVAILABLE OUT-SITE OF THE PROMISE.
+function addEvents(commentObject) {
+  const likeButton = document.querySelector(`#like--button--${commentObject.id}`);
+  likeButton.addEventListener('click', like);
+  const removeButton = document.querySelector(`#remove--button--${commentObject.id}`);
+  removeButton.addEventListener('click', remove);
+}

@@ -390,6 +390,31 @@ a {
     margin-bottom: 1.5rem;
     @include h4-paragraph;
   }
+  &__interaction {
+    display: flex;
+    width: 100%;
+    &--likes {
+      @include button;
+      color: white;
+      margin-right: 10px;
+      width: 3rem;
+      &:hover {
+        background-color: black;
+      }
+    }
+    &--delete {
+      @include button;
+      color: white;
+      margin-left: auto;
+      width: 3rem;
+      &:hover {
+        background-color: black;
+      }
+    }
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 // FOOTER ***************************************************************************************
@@ -485,8 +510,4 @@ a {
       margin-top: 2.5rem;
     }
   }
-}
-
-.comment-body__interaction--delete {
-  background-color: red;
 }

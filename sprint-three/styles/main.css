@@ -746,6 +746,39 @@ a {
     line-height: 1.375rem;
   }
 }
+.comment-body__interaction {
+  display: flex;
+  width: 100%;
+}
+.comment-body__interaction--likes {
+  color: white;
+  background-color: #323232;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  margin-right: 10px;
+  width: 3rem;
+}
+.comment-body__interaction--likes:hover {
+  background-color: black;
+}
+.comment-body__interaction--delete {
+  color: white;
+  background-color: #323232;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  margin-left: auto;
+  width: 3rem;
+}
+.comment-body__interaction--delete:hover {
+  background-color: black;
+}
+@media (min-width: 768px) {
+  .comment-body__interaction {
+    margin-bottom: 1rem;
+  }
+}
 
 .footer-container {
   margin-top: 1rem;
@@ -901,8 +934,4 @@ a {
   .footer-info .footer-copyright {
     margin-top: 2.5rem;
   }
-}
-
-.comment-body__interaction--delete {
-  background-color: red;
 }/*# sourceMappingURL=main.css.map */
