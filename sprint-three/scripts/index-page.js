@@ -3,7 +3,6 @@ const conversation = document.querySelector('.conversation-container-posted');
 const form = document.querySelector('form');
 // Array THAT HOLDS ALL MY COMMENT OBJECTS
 let objectsArray;
-
 // VARIABLE THAT HOLDS MY HTML TEMPLATE
 const template = (singleCommentObj) => {
   return `
