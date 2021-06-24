@@ -24,16 +24,29 @@ a {
   text-align: center;
   height: 5rem;
   background-color: $navigation-background-fill;
-
   @include tablet {
     @include flex-row;
     align-items: baseline;
   }
-
-  &__items {
+  &__logo {
+    @include side-margin-logo;
+    height: 0.938rem;
+    margin-top: 1rem;
+    @include tablet {
+      margin-top: 1.5rem;
+    }
+  }
+  &__lists {
+    @include flex-row;
+    justify-content: space-between;
+  }
+  &__list {
     width: 50%;
     padding-bottom: 0.313rem;
     margin: 1rem 0 0 0;
+    &--active {
+      border-bottom: 0.313px solid white;
+    }
     @include tablet {
       width: auto;
       min-width: auto;
@@ -43,32 +56,17 @@ a {
     @include desktop {
       margin: 0 3.5rem;
     }
-    &--logo {
-      @include side-margin-logo;
-      height: 0.938rem;
-      margin-top: 1rem;
-      @include tablet {
-        margin-top: 1.5rem;
-      }
-    }
-    &--bar {
-      border-bottom: 0.313px solid white;
-    }
-    a {
-      display: inline-block;
-      @include h3-subheader;
-      color: white;
-      &:hover {
-        text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
-        transform: scale(2);
-        transition: 0.2s;
-        font-weight: bold;
-      }
-    }
   }
-  &__links-cont {
-    @include flex-row;
-    justify-content: space-between;
+  &__link {
+    display: inline-block;
+    @include h3-subheader;
+    color: white;
+    &:hover {
+      text-shadow: 0px 1px 3px rgba(253, 201, 31, 0.5);
+      transform: scale(2);
+      transition: 0.2s;
+      font-weight: bold;
+    }
   }
 }
 #biography {
@@ -209,30 +207,24 @@ a {
   @include flex-column;
   @include tablet {
     @include flex-row;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
   &__figure {
     width: 100%;
-    // height: 162;
     margin-bottom: 1rem;
     filter: grayscale(0.6);
     &:hover {
       filter: grayscale(0);
     }
     @include tablet {
-      width: 31%;
+      width: calc(33% - 1.5rem);
       margin-bottom: 1.5rem;
       min-width: 14rem;
     }
     @include desktop {
-      width: 31%;
+      width: calc(33% - 1.5rem);
       min-width: 21.5rem;
-    }
-    &--margin-mid {
-      @include tablet {
-        margin: 0 1.5rem;
-      }
     }
     &--img {
       width: 100%;
